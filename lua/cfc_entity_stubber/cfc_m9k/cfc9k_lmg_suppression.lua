@@ -12,13 +12,13 @@ cfcEntityStubber.registerStub( function()
 		
 		weapon.Primary.Sound = "BlackVulcan.Single"
 
-        weapon.Primary.RPM = 700
+        weapon.Primary.RPM = 725
         weapon.Primary.ClipSize = 150
         weapon.Primary.KickUp = 0.9
         weapon.Primary.KickDown = 0
         weapon.Primary.KickHorizontal = 0.4
         weapon.Primary.NumShots = 2
         weapon.Primary.Damage = 20
-        weapon.Primary.Spread = 0.038
+        weapon.Primary.Spread = 0.03
     end
 end )
