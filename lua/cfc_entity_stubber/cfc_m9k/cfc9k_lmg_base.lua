@@ -10,6 +10,7 @@ cfcEntityStubber.registerStub( function()
         weapon.Purpose = ""
         weapon.CFC_Category = "LMG:Base"
 
+        weapon.ShouldDoMoveSpread = true
         weapon.Primary.RPM = 700
         weapon.Primary.ClipSize = 100
         weapon.Primary.KickUp = 1
@@ -18,8 +19,8 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.Damage = 28
         weapon.Primary.Spread = 0.05
         weapon.Primary.IronAccuracy = 0.009
-		weapon.Primary.Ammo = "AirboatGun"
-		weapon.Primary.DefaultClip = 1000
+        weapon.Primary.Ammo = "AirboatGun"
+        weapon.Primary.DefaultClip = 1000
     end
 end )
 
@@ -33,6 +34,7 @@ cfcEntityStubber.registerStub( function()
         weapon.Purpose = ""
         weapon.CFC_Category = "LMG:Base"
 
+        weapon.ShouldDoMoveSpread = true
         weapon.Primary.RPM = 700
         weapon.Primary.ClipSize = 100
         weapon.Primary.KickUp = 0.95
@@ -41,7 +43,7 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.Damage = 28
         weapon.Primary.Spread = 0.048
         weapon.Primary.IronAccuracy = 0.0093
-		weapon.Primary.Ammo = "AirboatGun"
-		weapon.Primary.DefaultClip = 1000
+        weapon.Primary.Ammo = "AirboatGun"
+        weapon.Primary.DefaultClip = 1000
     end
 end )
