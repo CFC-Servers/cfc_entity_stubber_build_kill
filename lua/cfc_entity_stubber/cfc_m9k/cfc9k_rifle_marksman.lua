@@ -59,14 +59,14 @@ cfcEntityStubber.registerStub( function()
         weapon.CFC_Category = "Rifle:Marksman"
 
         weapon.Primary.RPM = 70
-        weapon.Primary.ClipSize = 10
+        weapon.Primary.ClipSize = 7
         weapon.Primary.KickUp = 2
         weapon.Primary.KickDown = 1
         weapon.Primary.KickHorizontal = 0.3
         weapon.Primary.Automatic = false
         weapon.Primary.Ammo = "AirboatGun"
-        weapon.Primary.Damage = 75
-        weapon.Primary.Spread = 0.06
+        weapon.Primary.Damage = 70
+        weapon.Primary.Spread = 0.003
         weapon.Primary.IronAccuracy = 0.0001
 		weapon.Primary.DefaultClip = 1000
     end
