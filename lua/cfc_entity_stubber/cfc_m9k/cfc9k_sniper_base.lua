@@ -17,14 +17,14 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.KickHorizontal = 8
         weapon.Primary.Damage = 75
         weapon.Primary.SpreadBefore = 0.02
-		weapon.Primary.SpreadZoomed = 0.0001
-		weapon.Primary.DefaultClip = 1000
+        weapon.Primary.SpreadZoomed = 0.0001
+        weapon.Primary.DefaultClip = 1000
     end
 end )
 
 cfcEntityStubber.registerStub( function()
     local weapons = {
-		"m9k_remington7615p"
+        "m9k_remington7615p"
     }
 
     for _, weaponClass in ipairs( weapons ) do
@@ -39,16 +39,16 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.KickHorizontal = 8
         weapon.Primary.Damage = 25
         weapon.Primary.SpreadBefore = 0.035
-		weapon.Primary.SpreadZoomed = 0.0005
-		weapon.Primary.DefaultClip = 1000
+        weapon.Primary.SpreadZoomed = 0.0005
+        weapon.Primary.DefaultClip = 1000
     end
 end )
 
 cfcEntityStubber.registerStub( function()
     local weapons = {
-		"m9k_contender"
-	}
-	
+        "m9k_contender"
+    }
+
     for _, weaponClass in ipairs( weapons ) do
         local weapon = cfcEntityStubber.getWeapon( weaponClass )
         weapon.Purpose = ""
@@ -63,6 +63,6 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.Damage = 75
         weapon.Primary.SpreadBefore = 0.013
         weapon.Primary.SpreadZoomed = 0.0001
-		weapon.Primary.DefaultClip = 1000
+        weapon.Primary.DefaultClip = 1000
     end
 end )
