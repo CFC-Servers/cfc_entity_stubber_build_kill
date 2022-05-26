@@ -7,8 +7,8 @@ cfcEntityStubber.registerStub( function()
         "m9k_scoped_taurus",
         "m9k_model3russian",
         "m9k_model627",
-		"m9k_deagle",
-		"m9k_m29satan"
+        "m9k_deagle",
+        "m9k_m29satan"
     }
 
     for _, weaponClass in pairs( weapons ) do
@@ -30,9 +30,9 @@ end )
 
 cfcEntityStubber.registerStub( function()
     local weapons = {
-	    "m9k_remington1858"
+        "m9k_remington1858"
     }
-	
+
     for _, weaponClass in ipairs( weapons ) do
         local weapon = cfcEntityStubber.getWeapon( weaponClass )
         weapon.Purpose = ""
@@ -46,8 +46,8 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.Automatic = false
         weapon.Primary.Damage = 55
         weapon.Primary.Spread = 0.01
-		weapon.Primary.NumShots = 1
-		weapon.Primary.IronAccuracy = 0.0007
+        weapon.Primary.NumShots = 1
+        weapon.Primary.IronAccuracy = 0.0007
     end
 end )
 
@@ -61,6 +61,6 @@ cfcEntityStubber.registerStub( function()
         weapon.Purpose = ""
         weapon.CFC_Category = "Pistol:Revolver"
 
-		weapon.Primary.SpreadZoomed = 0.0005
+        weapon.Primary.SpreadZoomed = 0.0005
     end
 end )
