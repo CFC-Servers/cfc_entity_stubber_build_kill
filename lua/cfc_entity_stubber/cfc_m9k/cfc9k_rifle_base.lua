@@ -45,8 +45,8 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.NumShots = 1
         weapon.Primary.Damage = 28
         weapon.Primary.Spread = 0.043
-		weapon.Primary.Sound = "an94.Single"
-		weapon.Primary.SpreadZoomed = 0.005
+        weapon.Primary.Sound = "an94.Single"
+        weapon.Primary.SpreadZoomed = 0.005
     end
 end )
 

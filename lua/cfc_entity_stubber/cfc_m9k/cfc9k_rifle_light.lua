@@ -30,8 +30,8 @@ end )
 cfcEntityStubber.registerStub( function()
     local weapons = {
         "m9k_f2000",
-		"m9k_honeybadger",
-		"m9k_auga3"
+        "m9k_honeybadger",
+        "m9k_auga3"
     }
 
     for _, weaponClass in ipairs( weapons ) do
@@ -40,6 +40,6 @@ cfcEntityStubber.registerStub( function()
         weapon.CFC_Category = "Rifle:Light"
 
         weapon.Primary.SpreadBefore = 0.04
-		weapon.Primary.SpreadZoomed = 0.005
+        weapon.Primary.SpreadZoomed = 0.005
     end
 end )
