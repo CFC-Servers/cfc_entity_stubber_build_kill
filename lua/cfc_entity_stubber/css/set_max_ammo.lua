@@ -30,6 +30,8 @@ local cssWeapons = {
 cfcEntityStubber.registerStub( function()
     for _, weaponClass in ipairs( cssWeapons ) do
         local weapon = cfcEntityStubber.getWeapon( weaponClass )
-        weapon.Primary.MaxAmmo = weapon.Primary.MaxAmmo * 10
+        if IsValid( weapon ) then
+            weapon.Primary.MaxAmmo = weapon.Primary.MaxAmmo * 10
+        end
     end
 end )
