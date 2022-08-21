@@ -5,11 +5,13 @@ cfcEntityStubber.registerStub( function()
     local cwBase = cfcEntityStubber.getWeapon( "cw_base" )
     cwBase.scaleSensitivityToSpread = false
 
-    cwBase._AdjustMouseSensitivity = cwBase._AdjustMouseSensitivity or cwBase.AdjustMouseSensitivity
+    if CLIENT then
+        cwBase._AdjustMouseSensitivity = cwBase._AdjustMouseSensitivity or cwBase.AdjustMouseSensitivity
 
-    cwBase.AdjustMouseSensitivity = function(self, ...)
-        self.OverallMouseSens = 1
-        
-        return cwBase._AdjustMouseSensitivity(self, ...)
+        cwBase.AdjustMouseSensitivity = function(self, ...)
+            self.OverallMouseSens = 1
+            
+            return cwBase._AdjustMouseSensitivity(self, ...)
+        end
     end
 end )
