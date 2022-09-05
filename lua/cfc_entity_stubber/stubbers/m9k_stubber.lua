@@ -8,6 +8,8 @@ local function stubM9kBase()
 
     base.OriginalShootBullet = base.ShootBullet
     base.ShootBullet = function( self, damage, _, numBullets, spread )
+        spread = self.Primary.Spread
+
         if self.IronSightState then
             spread = self.Primary.IronAccuracy or spread
         end
