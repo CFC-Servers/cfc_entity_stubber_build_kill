@@ -13,7 +13,7 @@ cfcEntityStubber.registerStub( function()
 
     local IsValid = IsValid
 
-    hook.Add( "EntityTakeDamage", "CW_Stubber_BuffWhateverGunForce", function( ent, dmg )
+    hook.Add( "EntityTakeDamage", "CW_Stubber_BuffWhateverGunForce", function( _, dmg )
         local attacker = dmg:GetAttacker()
         if not IsValid( attacker ) then return end
         if not attacker:IsPlayer() then return end
