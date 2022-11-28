@@ -10,7 +10,7 @@ cfcEntityStubber.registerStub( function()
         weapon.Purpose = ""
         weapon.CFC_Category = "Rifle:Battle"
 
-        weapon.Primary.RPM = 450
+        weapon.Primary.RPM = 550
         weapon.Primary.ClipSize = 20
         weapon.Primary.KickUp = 1.1
         weapon.Primary.KickDown = 0
@@ -33,10 +33,10 @@ cfcEntityStubber.registerStub( function()
 
         weapon.Primary.RPM = 450
         weapon.Primary.ClipSize = 20
-        weapon.Primary.KickUp = 1.1
+        weapon.Primary.KickUp = 1
         weapon.Primary.KickDown = 0
-        weapon.Primary.KickHorizontal = 0.35
-        weapon.Primary.Damage = 45
+        weapon.Primary.KickHorizontal = 0.3
+        weapon.Primary.Damage = 30
         weapon.Primary.Spread = 0.05
         weapon.Primary.SpreadZoomed = 0.0035
     end
