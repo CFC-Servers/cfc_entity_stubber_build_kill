@@ -39,11 +39,11 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.ClipSize = 30
         weapon.Primary.KickUp = 1
         weapon.Primary.KickDown = 0
-        weapon.Primary.KickHorizontal = 0.23
+        weapon.Primary.KickHorizontal = 0.25
         weapon.Primary.Automatic = true
         weapon.Primary.Ammo = "ar2"
         weapon.Primary.NumShots = 1
-        weapon.Primary.Damage = 28
+        weapon.Primary.Damage = 25
         weapon.Primary.Spread = 0.043
         weapon.Primary.Sound = "an94.Single"
         weapon.Primary.SpreadZoomed = 0.005
@@ -87,15 +87,15 @@ cfcEntityStubber.registerStub( function()
 
         weapon.Primary.RPM = 725
         weapon.Primary.ClipSize = 30
-        weapon.Primary.KickUp = 1
+        weapon.Primary.KickUp = 1.8
         weapon.Primary.KickDown = 0
-        weapon.Primary.KickHorizontal = 0.23
+        weapon.Primary.KickHorizontal = 0.25
         weapon.Primary.Automatic = true
         weapon.Primary.Ammo = "ar2"
         weapon.Primary.NumShots = 1
-        weapon.Primary.Damage = 28
-        weapon.Primary.Spread = 0.045
-        weapon.Primary.IronAccuracy = 0.0052
+        weapon.Primary.Damage = 20
+        weapon.Primary.Spread = 0.05
+        weapon.Primary.IronAccuracy = 0.01
     end
 end )
 
@@ -119,6 +119,6 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.NumShots = 1
         weapon.Primary.Damage = 28
         weapon.Primary.Spread = 0.04
-        weapon.Primary.IronAccuracy = 0.005
+        weapon.Primary.IronAccuracy = 0.01
     end
 end )
