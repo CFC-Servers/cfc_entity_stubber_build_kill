@@ -23,6 +23,6 @@ cfcEntityStubber.registerStub( function()
 
         if wep:GetClass() ~= "cw_g4p_g2contender" then return end
 
-        dmg:SetDamageForce( dmg:GetDamageForce() * 200 )
+        dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
     end )
 end )
