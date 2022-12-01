@@ -13,7 +13,7 @@ cfcEntityStubber.registerStub( function()
 
     local IsValid = IsValid
 
-    hook.Add( "EntityTakeDamage", "CW_Stubber_BuffWhateverGunForce", function( _, dmg )
+    hook.Add( "EntityTakeDamage", "CW_Stubber_BuffWhateverGunForce", function( ent, dmg )
         local attacker = dmg:GetAttacker()
         if not IsValid( attacker ) then return end
         if not attacker:IsPlayer() then return end
@@ -23,6 +23,10 @@ cfcEntityStubber.registerStub( function()
 
         if wep:GetClass() ~= "cw_g4p_g2contender" then return end
 
-        dmg:SetDamageForce( dmg:GetDamageForce() * 7 )
+        if IsValid( ent ) ent:IsPlayer() then
+            dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
+        else
+            dmg:SetDamageForce( dmg:GetDamageForce() * 7 )
+        end
     end )
 end )
