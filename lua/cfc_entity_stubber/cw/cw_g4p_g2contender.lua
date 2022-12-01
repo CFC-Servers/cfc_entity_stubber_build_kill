@@ -9,7 +9,7 @@ cfcEntityStubber.registerStub( function()
     weapon.HipSpread = 0.1
     weapon.SpreadPerShot = 0.01
     weapon.ClumpSpread = 0.1
-    weapon.ReloadSpeed = 0.7
+    weapon.ReloadSpeed = 0.65
 
     local IsValid = IsValid
 
@@ -23,6 +23,6 @@ cfcEntityStubber.registerStub( function()
 
         if wep:GetClass() ~= "cw_g4p_g2contender" then return end
 
-        dmg:SetDamageForce( dmg:GetDamageForce() * 30 )
+        dmg:SetDamageForce( dmg:GetDamageForce() * 7 )
     end )
 end )
