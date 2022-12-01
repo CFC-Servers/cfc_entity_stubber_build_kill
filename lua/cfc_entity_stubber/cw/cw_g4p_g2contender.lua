@@ -23,7 +23,7 @@ cfcEntityStubber.registerStub( function()
 
         if wep:GetClass() ~= "cw_g4p_g2contender" then return end
 
-        if IsValid( ent ) ent:IsPlayer() then
+        if IsValid( ent ) and ent:IsPlayer() then
             dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
         else
             dmg:SetDamageForce( dmg:GetDamageForce() * 7 )
