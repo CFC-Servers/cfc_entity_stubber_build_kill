@@ -15,9 +15,9 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.KickUp = 1.1
         weapon.Primary.KickDown = 0
         weapon.Primary.KickHorizontal = 0.35
-        weapon.Primary.Damage = 45
+        weapon.Primary.Damage = 30
         weapon.Primary.Spread = 0.05
-        weapon.Primary.IronAccuracy = 0.003
+        weapon.Primary.IronAccuracy = 0.01
     end
 end )
 
@@ -33,12 +33,12 @@ cfcEntityStubber.registerStub( function()
 
         weapon.Primary.RPM = 450
         weapon.Primary.ClipSize = 20
-        weapon.Primary.KickUp = 1
+        weapon.Primary.KickUp = 1.3
         weapon.Primary.KickDown = 0
         weapon.Primary.KickHorizontal = 0.3
         weapon.Primary.Damage = 30
-        weapon.Primary.Spread = 0.05
-        weapon.Primary.SpreadZoomed = 0.0035
+        weapon.Primary.Spread = 0.03
+        weapon.Primary.SpreadZoomed = 0.006
     end
 end )
 
@@ -57,9 +57,9 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.KickUp = 1
         weapon.Primary.KickDown = 0
         weapon.Primary.KickHorizontal = 0.3
-        weapon.Primary.Damage = 45
-        weapon.Primary.Spread = 0.05
-        weapon.Primary.IronAccuracy = 0.002
+        weapon.Primary.Damage = 35
+        weapon.Primary.Spread = 0.03
+        weapon.Primary.IronAccuracy = 0.008
         weapon.Primary.Automatic = false
     end
 end )
@@ -76,11 +76,11 @@ cfcEntityStubber.registerStub( function()
 
         weapon.Primary.RPM = 485
         weapon.Primary.ClipSize = 20
-        weapon.Primary.KickUp = 1.12
+        weapon.Primary.KickUp = 1.1
         weapon.Primary.KickDown = 0
-        weapon.Primary.KickHorizontal = 0.37
-        weapon.Primary.Damage = 45
-        weapon.Primary.Spread = 0.05
-        weapon.Primary.IronAccuracy = 0.003
+        weapon.Primary.KickHorizontal = 0.6
+        weapon.Primary.Damage = 32
+        weapon.Primary.Spread = 0.03
+        weapon.Primary.IronAccuracy = 0.006
     end
 end )
