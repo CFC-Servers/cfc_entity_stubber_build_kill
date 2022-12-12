@@ -37,7 +37,7 @@ cfcEntityStubber.registerStub( function()
             ply:SetVelocity( dir * self.Bonk.SelfForce ) -- SetVelocity() when used on a player is additive
         end
 
-        return weapon._ShootBullet( self, damage, recoil, numBullets, spread )
+        return self:_ShootBullet( damage, recoil, numBullets, spread )
     end
 
     hook.Add( "EntityTakeDamage", "M9K_Stubber_BonkGun_YeetVictim", function( ent, dmg )
