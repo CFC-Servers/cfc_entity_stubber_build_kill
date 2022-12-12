@@ -31,10 +31,11 @@ cfcEntityStubber.registerStub( function()
         local ply = self:GetOwner()
         if not IsValid( ply ) or not ply:IsPlayer() then return end
 
-        if ply:IsOnGround() then return end -- Only apply self-knockback if in the air
-
-        local dir = -ply:GetAimVector()
-        ply:SetVelocity( dir * self.Bonk.SelfForce ) -- SetVelocity() when used on a player is additive
+        -- Self-knockback
+        if not ply:IsOnGround() then
+            local dir = -ply:GetAimVector()
+            ply:SetVelocity( dir * self.Bonk.SelfForce ) -- SetVelocity() when used on a player is additive
+        end
 
         return weapon._ShootBullet( self, damage, recoil, numBullets, spread )
     end
