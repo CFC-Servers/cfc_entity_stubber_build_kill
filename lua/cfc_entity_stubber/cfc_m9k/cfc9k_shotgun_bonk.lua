@@ -26,7 +26,7 @@ cfcEntityStubber.registerStub( function()
 
     local IsValid = IsValid
 
-    weapon._ShootBullet = weapon.ShootBullet
+    weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
     weapon.ShootBullet = function( self, damage, recoil, numBullets, spread )
         local ply = self:GetOwner()
         if not IsValid( ply ) or not ply:IsPlayer() then return end
