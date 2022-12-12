@@ -26,7 +26,7 @@ cfcEntityStubber.registerStub( function()
 
     local IsValid = IsValid
 
-    weapon.OriginalShootBullet = weapon.ShootBullet
+    local _ShootBullet = weapon.ShootBullet
     weapon.ShootBullet = function( self, damage, recoil, numBullets, spread )
         local ply = self:GetOwner()
         if not IsValid( ply ) or not ply:IsPlayer() then return end
@@ -36,7 +36,7 @@ cfcEntityStubber.registerStub( function()
         local dir = -ply:GetAimVector()
         ply:SetVelocity( dir * self.Bonk.SelfForce ) -- SetVelocity() when used on a player is additive
 
-        return self:OriginalShootBullet( damage, recoil, numBullets, spread )
+        return _ShootBullet( self, damage, recoil, numBullets, spread )
     end
 
     hook.Add( "EntityTakeDamage", "M9K_Stubber_BonkGun_YeetVictim", function( ent, dmg )
