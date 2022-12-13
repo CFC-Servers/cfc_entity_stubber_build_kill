@@ -25,6 +25,11 @@ local function enoughToKill( ply, dmgAmount )
 end
 
 local function getBonkForce( wep, dmgForce, dmgAmount, fromGround )
+    local maxDamage = wep.Primary.Damage * wep.Primary.NumShots
+    local damageMult = math.min( dmgAmount / maxDamage, wep.Bonk.PlayerForceMultMax )
+
+    if damageMult < wep.Bonk.PlayerForceIgnoreThreshold then return false end
+
     dmgForce = dmgForce:GetNormalized() -- Normalize without modifying original argument
 
     if fromGround then
@@ -34,8 +39,6 @@ local function getBonkForce( wep, dmgForce, dmgAmount, fromGround )
         dmgForce:Normalize()
     end
 
-    local maxDamage = wep.Primary.Damage * wep.Primary.NumShots
-    local damageMult = math.min( dmgAmount / maxDamage, wep.Bonk.PlayerForceMultMax )
     local forceStrength = wep.Bonk.PlayerForce * damageMult
     local force = dmgForce * forceStrength
 
@@ -47,6 +50,8 @@ local function getBonkForce( wep, dmgForce, dmgAmount, fromGround )
 end
 
 local function bonkPlayer( attacker, victim, force )
+    if not force then return end
+
     victim:SetVelocity( force )
 
     if not IMPACT_DAMAGE_ENABLED then return end
@@ -174,6 +179,7 @@ cfcEntityStubber.registerStub( function()
         weapon.Bonk.PlayerForceBiasZMult = 0.9 -- Makes ground launches be more vertical, proportionally
         weapon.Bonk.PlayerForceBiasZAdd = 0.2 -- Makes ground launches be more vertical, additively
         weapon.Bonk.PlayerForceZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
+        weapon.Bonk.PlayerForceIgnoreThreshold = 0.2 -- If the damage multiplier is below this, the player won't be launched
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
     weapon.Bonk.SelfForce = 450 -- Self-knockback when shooting while in the air
