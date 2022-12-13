@@ -45,9 +45,14 @@ local function refundAirShot( attacker, victim, wep )
     wep:SetClip1( clipAmmo + 1 )
 end
 
-local function getBonkForce( wep, dmgForce, dmgAmount, fromGround )
+local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
     local maxDamage = wep.Primary.Damage * wep.Primary.NumShots
     local damageMult = math.min( dmgAmount / maxDamage, wep.Bonk.PlayerForceMultMax )
+    local bonkInfo = victim.cfc9k_bonkInfo or {}
+
+    if bonkInfo.IsBonked then
+        damageMult = damageMult * wep.Bonk.PlayerForceComboMult
+    end
 
     if damageMult < wep.Bonk.PlayerForceIgnoreThreshold then return false end
 
@@ -112,7 +117,7 @@ local function bonkVictim( attacker, victim, dmg, wep )
             -- Death ragdoll only needs a force multiplier
             dmg:SetDamageForce( dmgForce * wep.Bonk.PlayerForceMultRagdoll )
         else
-            local force = getBonkForce( wep, dmgForce, dmgAmount, fromGround )
+            local force = getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
 
             bonkPlayer( attacker, victim, force )
         end
@@ -204,6 +209,7 @@ cfcEntityStubber.registerStub( function()
     weapon.Bonk = weapon.Bonk or {}
     weapon.Bonk.PlayerForce = 800 / 0.8 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
         weapon.Bonk.PlayerForceMultMax = 0.8 -- Damage mult (normal is 1) cannot exceed this value (otherwise could have massive launches from M9K damage spread, headshots, etc.)
+        weapon.Bonk.PlayerForceComboMult = 1.65 -- Multiplies against force strength if the victim is currently in a bonk state
         weapon.Bonk.PlayerForceBiasZMult = 0.9 -- Makes ground launches be more vertical, proportionally
         weapon.Bonk.PlayerForceBiasZAdd = 0.2 -- Makes ground launches be more vertical, additively
         weapon.Bonk.PlayerForceZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
