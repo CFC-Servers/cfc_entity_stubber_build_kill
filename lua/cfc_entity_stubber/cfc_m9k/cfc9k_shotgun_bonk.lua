@@ -7,6 +7,7 @@ local IMPACT_DAMAGE_MAX = 45
 local IMPACT_ACCELERATION_THRESHOLD = 7000
 local IMPACT_START_DELAY = 0.1
 local IMPACT_LIFETIME = 6
+local AIR_SHOTS_REFUND_AMMO = false -- Shooting a mid-air victim while they've been bonked refunds a single shot of ammo
 local BONK_GUN_CLASS = "m9k_ithacam37"
 
 local IsValid = IsValid
@@ -22,6 +23,26 @@ local function enoughToKill( ply, dmgAmount )
     end
 
     return false
+end
+
+-- Refunds a single shot of ammo if the victim is in the air due to being bonked
+local function refundAirShot( attacker, victim, wep )
+    if not AIR_SHOTS_REFUND_AMMO then return end
+    if not attacker.cfc9k_bonkCanRefund then return end
+
+    attacker.cfc9k_bonkCanRefund = false -- Only refund once per shot, so shooting two players doesn't give extra ammo
+
+    if not IsValid( wep ) then return end
+    if victim:IsOnGround() then return end
+
+    local bonkInfo = victim.cfc9k_bonkInfo or {}
+    if not bonkInfo.IsBonked then return end
+
+    local clipAmmo = wep:Clip1()
+    local clipMax = wep.Primary.ClipSize
+    if clipAmmo >= clipMax then return end
+
+    wep:SetClip1( clipAmmo + 1 )
 end
 
 local function getBonkForce( wep, dmgForce, dmgAmount, fromGround )
@@ -84,6 +105,8 @@ local function bonkVictim( attacker, victim, dmg, wep )
         if fromGround then
             dmgForce.z = math.abs( dmgForce.z )
         end
+
+        refundAirShot( attacker, victim, wep )
 
         if enoughToKill( victim, dmgAmount ) then
             -- Death ragdoll only needs a force multiplier
@@ -199,6 +222,10 @@ cfcEntityStubber.registerStub( function()
         if not ply:IsOnGround() then
             local dir = -ply:GetAimVector()
             ply:SetVelocity( dir * self.Bonk.SelfForce ) -- SetVelocity() when used on a player is additive
+        end
+
+        if AIR_SHOTS_REFUND_AMMO then
+            ply.cfc9k_bonkCanRefund = true
         end
 
         return self:_ShootBullet( damage, recoil, numBullets, spread )
