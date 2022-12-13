@@ -3,7 +3,7 @@ AddCSLuaFile()
 local IMPACT_DAMAGE_ENABLED = true
 local IMPACT_DAMAGE_MULT = 10 / 30000
 local IMPACT_DAMAGE_MIN = 5
-local IMPACT_DAMAGE_MAX = 40
+local IMPACT_DAMAGE_MAX = 45
 local IMPACT_ACCELERATION_THRESHOLD = 7000
 local IMPACT_START_DELAY = 0.1
 local IMPACT_LIFETIME = 6
@@ -155,8 +155,8 @@ cfcEntityStubber.registerStub( function()
     weapon.ShellTime = 0.5
 
     weapon.Bonk = weapon.Bonk or {}
-    weapon.Bonk.PlayerForceMult = 0.6
-        weapon.Bonk.PlayerForceMinZ = 210
+    weapon.Bonk.PlayerForceMult = 0.5
+        weapon.Bonk.PlayerForceMinZ = 230
         weapon.Bonk.PlayerForceMaxZ = 400
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
