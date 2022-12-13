@@ -123,7 +123,15 @@ local function detectImpact( ply, dt )
     local accel = velDiff:Length() / dt
     bonkInfo.PrevVel = curVel
 
-    if accel < IMPACT_ACCELERATION_THRESHOLD then return end
+    if accel < IMPACT_ACCELERATION_THRESHOLD then -- Not enough acceleration to be an impact
+        if ply:IsOnGround() then -- Clear bonk status if ply landed on the ground smoothly or never launched up
+            bonkInfo.IsBonked = nil
+            bonkInfo.PrevVel = nil
+            bonkInfo.Attacker = nil
+        end
+
+        return
+    end
 
     -- DEBUG
     bonkInfo.Attacker:ChatPrint( "Impact! " .. math.Round( accel ) .. " " .. math.Round( curVel:Length() ) )
