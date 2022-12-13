@@ -216,7 +216,7 @@ cfcEntityStubber.registerStub( function()
         weapon.Bonk.PlayerForceIgnoreThreshold = 0.2 -- If the damage multiplier is below this, the player won't be launched
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
-    weapon.Bonk.SelfForce = 450 -- Self-knockback when shooting while in the air
+    weapon.Bonk.SelfForce = 350 -- Self-knockback when shooting while in the air
 
 
     weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
