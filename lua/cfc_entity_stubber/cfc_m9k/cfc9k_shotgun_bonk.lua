@@ -1,12 +1,12 @@
 AddCSLuaFile()
 
 local IMPACT_DAMAGE_ENABLED = true
-local IMPACT_DAMAGE_MULT = 10 / 7000
-local IMPACT_DAMAGE_MIN = 10
-local IMPACT_DAMAGE_MAX = 50
+local IMPACT_DAMAGE_MULT = 10 / 30000
+local IMPACT_DAMAGE_MIN = 5
+local IMPACT_DAMAGE_MAX = 40
 local IMPACT_ACCELERATION_THRESHOLD = 7000
-local IMPACT_START_DELAY = 0.05
-local IMPACT_LIFETIME = 7
+local IMPACT_START_DELAY = 0.1
+local IMPACT_LIFETIME = 6
 local BONK_GUN_CLASS = "m9k_ithacam37"
 
 local IsValid = IsValid
@@ -140,22 +140,22 @@ cfcEntityStubber.registerStub( function()
 
     weapon.Primary.RPM = 80
     weapon.Primary.ClipSize = 2
-    weapon.Primary.KickUp = 6
-    weapon.Primary.KickDown = 4
-    weapon.Primary.KickHorizontal = 5
+    weapon.Primary.KickUp = 10
+    weapon.Primary.KickDown = 6
+    weapon.Primary.KickHorizontal = 7
     weapon.Primary.NumShots = 10
     weapon.Primary.Damage = 2
-    weapon.Primary.Spread = 0.1
-    weapon.Primary.IronAccuracy = 0.08
-    weapon.ShellTime = 0.4
+    weapon.Primary.Spread = 0.12
+    weapon.Primary.IronAccuracy = 0.1
+    weapon.ShellTime = 0.5
 
     weapon.Bonk = weapon.Bonk or {}
-    weapon.Bonk.PlayerForceMult = 0.7
+    weapon.Bonk.PlayerForceMult = 0.6
         weapon.Bonk.PlayerForceMinZ = 210
         weapon.Bonk.PlayerForceMaxZ = 400
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
-    weapon.Bonk.SelfForce = 600
+    weapon.Bonk.SelfForce = 500
 
 
     weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
