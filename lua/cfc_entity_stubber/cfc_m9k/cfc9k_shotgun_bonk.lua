@@ -24,11 +24,26 @@ local function enoughToKill( ply, dmgAmount )
     return false
 end
 
-local function getBonkForce( wep, dmgForce, dmgAmount )
-    local maxDamage = wep.Primary.Damage * wep.Primary.NumShots
-    local forceMult = wep.Bonk.PlayerForce * dmgAmount / maxDamage
+local function getBonkForce( wep, dmgForce, dmgAmount, fromGround )
+    dmgForce = dmgForce:GetNormalized() -- Normalize without modifying original argument
 
-    return dmgForce:GetNormalized() * forceMult
+    if fromGround then
+        local z = dmgForce.z
+        z = z * wep.Bonk.PlayerForceBiasZMult + wep.Bonk.PlayerForceBiasZAdd
+        dmgForce.z = z
+        dmgForce:Normalize()
+    end
+
+    local maxDamage = wep.Primary.Damage * wep.Primary.NumShots
+    local damageMult = math.min( dmgAmount / maxDamage, wep.Bonk.PlayerForceMultMax )
+    local forceStrength = wep.Bonk.PlayerForce * damageMult
+    local force = dmgForce * forceStrength
+
+    if fromGround then
+        force.z = math.max( force.z, wep.Bonk.PlayerForceZMin )
+    end
+
+    return force
 end
 
 local function bonkPlayer( attacker, victim, force )
@@ -58,17 +73,18 @@ local function bonkVictim( attacker, victim, dmg, wep )
 
     if IsValid( victim ) and victim:IsPlayer() then
         local dmgAmount = dmg:GetDamage()
+        local fromGround = attacker:IsOnGround() and victim:IsOnGround()
 
-        -- When both players are on the ground, the force is often downwards, which makes it very weak
-        if attacker:IsOnGround() and victim:IsOnGround() then
-            dmgForce.z = math.abs( dmgForce.z ) + wep.Bonk.PlayerForceBiasZ
+        -- When both players are on the ground, dmgForce is pointed downwards, which makes the launch weak
+        if fromGround then
+            dmgForce.z = math.abs( dmgForce.z )
         end
 
         if enoughToKill( victim, dmgAmount ) then
             -- Death ragdoll only needs a force multiplier
             dmg:SetDamageForce( dmgForce * wep.Bonk.PlayerForceMultRagdoll )
         else
-            local force = getBonkForce( wep, dmgForce, dmgAmount )
+            local force = getBonkForce( wep, dmgForce, dmgAmount, fromGround )
 
             bonkPlayer( attacker, victim, force )
         end
@@ -153,11 +169,14 @@ cfcEntityStubber.registerStub( function()
     weapon.ShellTime = 0.5
 
     weapon.Bonk = weapon.Bonk or {}
-    weapon.Bonk.PlayerForce = 500 -- Maximum launch strength, if all bullets hit
-        weapon.Bonk.PlayerForceBiasZ = 50 -- Makes launches be a bit more vertical
+    weapon.Bonk.PlayerForce = 700 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
+        weapon.Bonk.PlayerForceMultMax = 1.5 -- M9K damage spread, headshots, etc can't multiply the launch force by more than this
+        weapon.Bonk.PlayerForceBiasZMult = 0.9 -- Makes ground launches be more vertical, proportionally
+        weapon.Bonk.PlayerForceBiasZAdd = 0.2 -- Makes ground launches be more vertical, additively
+        weapon.Bonk.PlayerForceZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
-    weapon.Bonk.SelfForce = 400 -- Self-knockback when shooting while in the air
+    weapon.Bonk.SelfForce = 450 -- Self-knockback when shooting while in the air
 
 
     weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
