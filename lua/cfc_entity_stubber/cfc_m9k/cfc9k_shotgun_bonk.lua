@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 local IMPACT_DAMAGE_ENABLED = true
-local IMPACT_DAMAGE_MULT = 10 / 30000
+local IMPACT_DAMAGE_MULT = 10 / 25000
 local IMPACT_DAMAGE_MIN = 5
 local IMPACT_DAMAGE_MAX = 45
 local IMPACT_ACCELERATION_THRESHOLD = 7000
@@ -171,7 +171,7 @@ cfcEntityStubber.registerStub( function()
     weapon.Primary.Damage = 2
     weapon.Primary.Spread = 0.15
     weapon.Primary.IronAccuracy = 0.12
-    weapon.ShellTime = 0.6
+    weapon.ShellTime = 0.7
 
     weapon.Bonk = weapon.Bonk or {}
     weapon.Bonk.PlayerForce = 800 / 0.8 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
