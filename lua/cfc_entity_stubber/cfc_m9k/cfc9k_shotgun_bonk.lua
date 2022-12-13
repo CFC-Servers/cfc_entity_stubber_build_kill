@@ -82,19 +82,19 @@ end
 local function handleImpact( ply, accel )
     local bonkInfo = ply.cfc9k_bonkInfo
 
-    bonkInfo.IsBonked = false
-    bonkInfo.PrevVel = nil
-    bonkInfo.Attacker = nil
-
     local damage = math.Clamp( accel * IMPACT_DAMAGE_MULT, IMPACT_DAMAGE_MIN, IMPACT_DAMAGE_MAX )
     local attacker = IsValid( bonkInfo.Attacker ) and bonkInfo.Attacker or game.GetWorld()
-    local wep = ply:GetWeapon( BONK_GUN_CLASS )
+    local wep = attacker:GetWeapon( BONK_GUN_CLASS )
 
     if not IsValid( wep ) then
         wep = attacker
     end
 
     ply:TakeDamage( damage, attacker, wep )
+
+    bonkInfo.IsBonked = nil
+    bonkInfo.PrevVel = nil
+    bonkInfo.Attacker = nil
 end
 
 local function detectImpact( ply, dt )
@@ -110,7 +110,7 @@ local function detectImpact( ply, dt )
     end
 
     if RealTime() > bonkInfo.ExpireTime then
-        bonkInfo.IsBonked = false
+        bonkInfo.IsBonked = nil
         bonkInfo.PrevVel = nil
         bonkInfo.Attacker = nil
 
