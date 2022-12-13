@@ -114,6 +114,7 @@ local function handleImpact( ply, accel )
     end
 
     -- Setting the inflictor to wep ensures a proper killfeed icon, and prevents the bonk effect from re-applying since normal gunshots have inflictor == attacker
+    ply:SetLastHitGroup( HITGROUP_GENERIC )
     ply:TakeDamage( damage, attacker, wep )
 
     bonkInfo.IsBonked = nil
