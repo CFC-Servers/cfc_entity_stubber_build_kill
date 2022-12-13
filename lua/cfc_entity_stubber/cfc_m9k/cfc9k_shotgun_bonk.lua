@@ -90,6 +90,7 @@ local function handleImpact( ply, accel )
         wep = attacker
     end
 
+    -- Setting the inflictor to wep ensures a proper killfeed icon, and prevents the bonk effect from re-applying since normal gunshots have inflictor == attacker
     ply:TakeDamage( damage, attacker, wep )
 
     bonkInfo.IsBonked = nil
@@ -176,9 +177,10 @@ cfcEntityStubber.registerStub( function()
         if not IsValid( attacker ) then return end
         if not attacker:IsPlayer() then return end
 
+        if dmg:GetInflictor() ~= attacker then return end -- Prevent turrets and etc from bonking.
+
         local wep = attacker:GetActiveWeapon()
         if not IsValid( wep ) then return end
-
         if wep:GetClass() ~= BONK_GUN_CLASS then return end
 
         bonkVictim( attacker, ent, dmg, wep )
