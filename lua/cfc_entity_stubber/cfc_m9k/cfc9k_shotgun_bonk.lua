@@ -133,9 +133,6 @@ local function detectImpact( ply, dt )
         return
     end
 
-    -- DEBUG
-    bonkInfo.Attacker:ChatPrint( "Impact! " .. math.Round( accel ) .. " " .. math.Round( curVel:Length() ) )
-
     handleImpact( ply, accel )
 end
 
