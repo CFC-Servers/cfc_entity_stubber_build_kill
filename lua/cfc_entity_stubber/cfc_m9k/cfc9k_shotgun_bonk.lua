@@ -164,18 +164,18 @@ cfcEntityStubber.registerStub( function()
 
     weapon.Primary.RPM = 80
     weapon.Primary.ClipSize = 2
-    weapon.Primary.KickUp = 10
+    weapon.Primary.KickUp = 14
     weapon.Primary.KickDown = 6
     weapon.Primary.KickHorizontal = 7
     weapon.Primary.NumShots = 10
     weapon.Primary.Damage = 2
-    weapon.Primary.Spread = 0.12
-    weapon.Primary.IronAccuracy = 0.1
-    weapon.ShellTime = 0.5
+    weapon.Primary.Spread = 0.15
+    weapon.Primary.IronAccuracy = 0.12
+    weapon.ShellTime = 0.6
 
     weapon.Bonk = weapon.Bonk or {}
-    weapon.Bonk.PlayerForce = 700 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
-        weapon.Bonk.PlayerForceMultMax = 1.5 -- M9K damage spread, headshots, etc can't multiply the launch force by more than this
+    weapon.Bonk.PlayerForce = 750 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
+        weapon.Bonk.PlayerForceMultMax = 1.25 -- Damage mult cannot exceed this value (otherwise could have massive launches from M9K damage spread, headshots, etc.)
         weapon.Bonk.PlayerForceBiasZMult = 0.9 -- Makes ground launches be more vertical, proportionally
         weapon.Bonk.PlayerForceBiasZAdd = 0.2 -- Makes ground launches be more vertical, additively
         weapon.Bonk.PlayerForceZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
