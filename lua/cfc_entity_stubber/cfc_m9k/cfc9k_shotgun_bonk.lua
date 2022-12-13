@@ -12,12 +12,6 @@ local BONK_GUN_CLASS = "m9k_ithacam37"
 local IsValid = IsValid
 
 
-local function mathSign( x )
-    if x > 0 then return 1 end
-    if x < 0 then return -1 end
-    return 0
-end
-
 local function enoughToKill( ply, dmgAmount )
     local health = ply:Health()
     local armor = ply:Armor()
@@ -30,14 +24,14 @@ local function enoughToKill( ply, dmgAmount )
     return false
 end
 
-local function bonkPlayer( attacker, victim, wep, baseForce )
-    local force = baseForce * wep.Bonk.PlayerForceMult
-    local zSign = mathSign( force.z )
-    local zMin = wep.Bonk.PlayerForceMinZ
-    local zMax = wep.Bonk.PlayerForceMaxZ
+local function getBonkForce( wep, dmgForce, dmgAmount )
+    local maxDamage = wep.Primary.Damage * wep.Primary.NumShots
+    local forceMult = wep.Bonk.PlayerForce * dmgAmount / maxDamage
 
-    -- z-axis ends up being the dominant aspect of what sends a player far or not when they're on the ground
-    force.z = math.Clamp( math.abs( force.z ), zMin, zMax ) * zSign
+    return dmgForce:GetNormalized() * forceMult
+end
+
+local function bonkPlayer( attacker, victim, force )
     victim:SetVelocity( force )
 
     if not IMPACT_DAMAGE_ENABLED then return end
@@ -60,22 +54,26 @@ local function bonkPlayer( attacker, victim, wep, baseForce )
 end
 
 local function bonkVictim( attacker, victim, dmg, wep )
+    local dmgForce = dmg:GetDamageForce()
+
     if IsValid( victim ) and victim:IsPlayer() then
-        local force = dmg:GetDamageForce()
+        local dmgAmount = dmg:GetDamage()
 
         -- When both players are on the ground, the force is often downwards, which makes it very weak
         if attacker:IsOnGround() and victim:IsOnGround() then
-            force.z = math.abs( force.z )
+            dmgForce.z = math.abs( dmgForce.z ) + wep.Bonk.PlayerForceBiasZ
         end
 
-        -- ETD DamageForce on players only affects their death ragdoll
-        if enoughToKill( victim, dmg:GetDamage() ) then
-            dmg:SetDamageForce( force * wep.Bonk.PlayerForceMultRagdoll )
+        if enoughToKill( victim, dmgAmount ) then
+            -- Death ragdoll only needs a force multiplier
+            dmg:SetDamageForce( dmgForce * wep.Bonk.PlayerForceMultRagdoll )
         else
-            bonkPlayer( attacker, victim, wep, force )
+            local force = getBonkForce( wep, dmgForce, dmgAmount )
+
+            bonkPlayer( attacker, victim, force )
         end
     else
-        dmg:SetDamageForce( dmg:GetDamageForce() * wep.Bonk.PropForceMult )
+        dmg:SetDamageForce( dmgForce * wep.Bonk.PropForceMult )
     end
 end
 
@@ -155,12 +153,11 @@ cfcEntityStubber.registerStub( function()
     weapon.ShellTime = 0.5
 
     weapon.Bonk = weapon.Bonk or {}
-    weapon.Bonk.PlayerForceMult = 0.5
-        weapon.Bonk.PlayerForceMinZ = 230
-        weapon.Bonk.PlayerForceMaxZ = 400
+    weapon.Bonk.PlayerForce = 500 -- Maximum launch strength, if all bullets hit
+        weapon.Bonk.PlayerForceBiasZ = 50 -- Makes launches be a bit more vertical
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
-    weapon.Bonk.SelfForce = 500
+    weapon.Bonk.SelfForce = 400 -- Self-knockback when shooting while in the air
 
 
     weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
