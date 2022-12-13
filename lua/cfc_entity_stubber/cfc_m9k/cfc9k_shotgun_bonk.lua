@@ -109,6 +109,10 @@ local function handleImpact( ply, accel )
         wep = attacker
     end
 
+    if not ply:IsOnGround() then
+        ply:EmitSound( "physics/body/body_medium_impact_hard" .. math.random( 1, 6 ) .. ".wav", 85 )
+    end
+
     -- Setting the inflictor to wep ensures a proper killfeed icon, and prevents the bonk effect from re-applying since normal gunshots have inflictor == attacker
     ply:TakeDamage( damage, attacker, wep )
 
