@@ -1,11 +1,11 @@
 AddCSLuaFile()
 
 local IMPACT_DAMAGE_ENABLED = true
-local IMPACT_DAMAGE_MULT = 10 / 25000
+local IMPACT_DAMAGE_MULT = 10 / 23000
 local IMPACT_DAMAGE_MIN = 5
 local IMPACT_DAMAGE_MAX = 45
 local IMPACT_ACCELERATION_THRESHOLD = 7000
-local IMPACT_START_DELAY = 0.1
+local IMPACT_START_DELAY = 0.07
 local IMPACT_LIFETIME = 6
 local AIR_SHOTS_REFUND_AMMO = false -- Shooting a mid-air victim while they've been bonked refunds a single shot of ammo
 local BONK_GUN_CLASS = "m9k_ithacam37"
@@ -195,29 +195,29 @@ cfcEntityStubber.registerStub( function()
     weapon.Purpose = ""
     weapon.CFC_Category = "Shotgun:Bonk"
 
-    weapon.Primary.RPM = 80
+    weapon.Primary.RPM = 85
     weapon.Primary.ClipSize = 2
     weapon.Primary.KickUp = 14
     weapon.Primary.KickDown = 6
     weapon.Primary.KickHorizontal = 7
     weapon.Primary.NumShots = 10
     weapon.Primary.Damage = 2
-    weapon.Primary.Spread = 0.15
-    weapon.Primary.IronAccuracy = 0.12
+    weapon.Primary.Spread = 0.14
+    weapon.Primary.IronAccuracy = 0.11
     weapon.ShellTime = 0.7
 
     weapon.Bonk = weapon.Bonk or {}
-    weapon.Bonk.PlayerForce = 800 / 0.8 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
+    weapon.Bonk.PlayerForce = 820 / 0.8 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
         weapon.Bonk.PlayerForceMultMax = 0.8 -- Damage mult (normal is 1) cannot exceed this value (otherwise could have massive launches from M9K damage spread, headshots, etc.)
-        weapon.Bonk.PlayerForceComboMult = 1.65 -- Multiplies against force strength if the victim is currently in a bonk state
+        weapon.Bonk.PlayerForceComboMult = 2.3 -- Multiplies against force strength if the victim is currently in a bonk state
         weapon.Bonk.PlayerForceBiasZMult = 0.9 -- Makes ground launches be more vertical, proportionally
         weapon.Bonk.PlayerForceBiasZAdd = 0.2 -- Makes ground launches be more vertical, additively
         weapon.Bonk.PlayerForceZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
         weapon.Bonk.PlayerForceIgnoreThreshold = 0.2 -- If the damage multiplier is below this, the player won't be launched
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
-    weapon.Bonk.SelfForce = 350 -- Self-knockback when shooting while in the air
-    weapon.Bonk.SelfDamage = 5 -- Damage dealt to self when shooting while in the air
+    weapon.Bonk.SelfForce = Vector( 310, 310, 400 ) -- Self-knockback when shooting while in the air
+    weapon.Bonk.SelfDamage = 8 -- Damage dealt to self when shooting while in the air
 
 
     weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
