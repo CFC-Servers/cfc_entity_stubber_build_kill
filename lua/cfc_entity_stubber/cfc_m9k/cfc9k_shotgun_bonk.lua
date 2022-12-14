@@ -224,6 +224,10 @@ cfcEntityStubber.registerStub( function()
         local ply = self:GetOwner()
         if not IsValid( ply ) or not ply:IsPlayer() then return end
 
+        if CLIENT then
+            return self:_ShootBullet( damage, recoil, numBullets, spread )
+        end
+
         -- Self-knockback
         if not ply:IsOnGround() then
             local dir = -ply:GetAimVector()
