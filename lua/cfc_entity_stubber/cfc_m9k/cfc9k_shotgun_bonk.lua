@@ -217,6 +217,7 @@ cfcEntityStubber.registerStub( function()
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
     weapon.Bonk.SelfForce = 350 -- Self-knockback when shooting while in the air
+    weapon.Bonk.SelfDamage = 5 -- Damage dealt to self when shooting while in the air
 
 
     weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
@@ -232,6 +233,12 @@ cfcEntityStubber.registerStub( function()
         if not ply:IsOnGround() then
             local dir = -ply:GetAimVector()
             ply:SetVelocity( dir * self.Bonk.SelfForce ) -- SetVelocity() when used on a player is additive
+
+            local selfDamage = self.Bonk.SelfDamage
+            if selfDamage > 0 then
+                ply:TakeDamage( selfDamage, ply, self )
+                ply:EmitSound( "physics/body/body_medium_impact_soft" .. math.random( 1, 7 ) .. ".wav", 85 )
+            end
         end
 
         if AIR_SHOTS_REFUND_AMMO then
