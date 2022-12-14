@@ -9,7 +9,8 @@ cfcEntityStubber.registerStub( function()
     weapon.HipSpread = 0.1
     weapon.SpreadPerShot = 0.01
     weapon.ClumpSpread = 0.1
-    weapon.ReloadSpeed = 0.65
+    weapon.ReloadSpeed = 0.55
+    weapon.ACF_DamageMult = 2
 
     local IsValid = IsValid
 
