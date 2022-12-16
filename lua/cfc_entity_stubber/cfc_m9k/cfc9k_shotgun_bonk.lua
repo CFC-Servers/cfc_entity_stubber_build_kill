@@ -45,6 +45,15 @@ local function refundAirShot( attacker, victim, wep )
     wep:SetClip1( clipAmmo + 1 )
 end
 
+local function counteractOpposingVelocity( ply, forceDir )
+    local plyVel = ply:GetVelocity()
+    local dot = plyVel:Dot( forceDir )
+
+    if dot >= 0 then return Vector( 0, 0, 0 ) end
+
+    return -dot * forceDir
+end
+
 local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
     local maxDamage = wep.Primary.Damage * wep.Primary.NumShots
     local damageMult = math.min( dmgAmount / maxDamage, wep.Bonk.PlayerForceMultMax )
@@ -65,8 +74,9 @@ local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
         dmgForce:Normalize()
     end
 
+    local counterForce = counteractOpposingVelocity( ply, dmgForce )
     local forceStrength = wep.Bonk.PlayerForce * damageMult
-    local force = dmgForce * forceStrength
+    local force = dmgForce * forceStrength + counterForce
 
     if fromGround then
         force.z = math.max( force.z, wep.Bonk.PlayerForceZMin )
