@@ -19,6 +19,12 @@ local function mathSign( x )
     return 0
 end
 
+local function isBuildPlayer( ply )
+    if not ply:IsPlayer() then return false end
+    if not ply.IsInBuild then return false end
+    return ply:IsInBuild()
+end
+
 local function enoughToKill( ply, dmgAmount )
     local health = ply:Health()
     local armor = ply:Armor()
@@ -271,7 +277,7 @@ cfcEntityStubber.registerStub( function()
 
     hook.Add( "EntityTakeDamage", "M9K_Stubber_BonkGun_YeetVictim", function( victim, dmg )
         if not IsValid( victim ) then return end
-        if victim.IsInBuild and victim:IsInBuild() then return end
+        if isBuildPlayer( victim ) then return end
 
         local attacker = dmg:GetAttacker()
         if not IsValid( attacker ) then return end
