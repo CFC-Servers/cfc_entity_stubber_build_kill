@@ -207,11 +207,11 @@ cfcEntityStubber.registerStub( function()
     weapon.ShellTime = 0.7
 
     weapon.Bonk = weapon.Bonk or {}
-    weapon.Bonk.PlayerForce = 820 / 0.8 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
+    weapon.Bonk.PlayerForce = 800 / 0.8 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
         weapon.Bonk.PlayerForceMultMax = 0.8 -- Damage mult (normal is 1) cannot exceed this value (otherwise could have massive launches from M9K damage spread, headshots, etc.)
         weapon.Bonk.PlayerForceComboMult = 2.3 -- Multiplies against force strength if the victim is currently in a bonk state
         weapon.Bonk.PlayerForceBiasZMult = 0.9 -- Makes ground launches be more vertical, proportionally
-        weapon.Bonk.PlayerForceBiasZAdd = 0.2 -- Makes ground launches be more vertical, additively
+        weapon.Bonk.PlayerForceBiasZAdd = 0.25 -- Makes ground launches be more vertical, additively
         weapon.Bonk.PlayerForceZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
         weapon.Bonk.PlayerForceIgnoreThreshold = 0.2 -- If the damage multiplier is below this, the player won't be launched
     weapon.Bonk.PlayerForceMultRagdoll = 300
