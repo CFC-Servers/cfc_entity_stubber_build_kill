@@ -13,6 +13,12 @@ local BONK_GUN_CLASS = "m9k_ithacam37"
 local IsValid = IsValid
 
 
+local function mathSign( x )
+    if x > 0 then return 1 end
+    if x < 0 then return -1 end
+    return 0
+end
+
 local function enoughToKill( ply, dmgAmount )
     local health = ply:Health()
     local armor = ply:Armor()
@@ -70,6 +76,11 @@ local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
     if fromGround then
         local z = dmgForce.z
         z = z * wep.Bonk.PlayerForceGroundZMult + wep.Bonk.PlayerForceGroundZAdd
+        dmgForce.z = z
+        dmgForce:Normalize()
+    else
+        local z = dmgForce.z
+        z = z * wep.Bonk.PlayerForceAirZMult + mathSign( z ) * wep.Bonk.PlayerForceAirZAdd
         dmgForce.z = z
         dmgForce:Normalize()
     end
@@ -223,6 +234,8 @@ cfcEntityStubber.registerStub( function()
         weapon.Bonk.PlayerForceGroundZMult = 0.9 -- Makes ground launches be more vertical, proportionally
         weapon.Bonk.PlayerForceGroundZAdd = 0.25 -- Makes ground launches be more vertical, additively
         weapon.Bonk.PlayerForceGroundZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
+        weapon.Bonk.PlayerForceAirZMult = 1 -- Makes air launches be more vertical, proportionally
+        weapon.Bonk.PlayerForceAirZAdd = 0.1 -- Makes air launches be more vertical, additively
         weapon.Bonk.PlayerForceIgnoreThreshold = 0.2 -- If the damage multiplier is below this, the player won't be launched
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
