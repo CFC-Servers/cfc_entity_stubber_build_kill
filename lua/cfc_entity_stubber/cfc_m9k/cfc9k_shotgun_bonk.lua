@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 local IMPACT_DAMAGE_ENABLED = true
-local IMPACT_DAMAGE_MULT = 10 / 23000
+local IMPACT_DAMAGE_MULT = 10 / 20000
 local IMPACT_DAMAGE_MIN = 5
 local IMPACT_DAMAGE_MAX = 45
 local IMPACT_ACCELERATION_THRESHOLD = 7000
@@ -223,8 +223,8 @@ cfcEntityStubber.registerStub( function()
     weapon.Primary.KickHorizontal = 7
     weapon.Primary.NumShots = 10
     weapon.Primary.Damage = 2
-    weapon.Primary.Spread = 0.14
-    weapon.Primary.IronAccuracy = 0.11
+    weapon.Primary.Spread = 0.13
+    weapon.Primary.IronAccuracy = 0.1
     weapon.ShellTime = 0.7
 
     weapon.Bonk = weapon.Bonk or {}
@@ -240,7 +240,7 @@ cfcEntityStubber.registerStub( function()
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
     weapon.Bonk.SelfForce = Vector( 300, 300, 420 ) -- Self-knockback when shooting while in the air
-    weapon.Bonk.SelfDamage = 8 -- Damage dealt to self when shooting while in the air
+    weapon.Bonk.SelfDamage = 6 -- Damage dealt to self when shooting while in the air
 
 
     weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
