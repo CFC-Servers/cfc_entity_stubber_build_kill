@@ -258,7 +258,10 @@ cfcEntityStubber.registerStub( function()
         return self:_ShootBullet( damage, recoil, numBullets, spread )
     end
 
-    hook.Add( "EntityTakeDamage", "M9K_Stubber_BonkGun_YeetVictim", function( ent, dmg )
+    hook.Add( "EntityTakeDamage", "M9K_Stubber_BonkGun_YeetVictim", function( victim, dmg )
+        if not IsValid( victim ) then return end
+        if victim.IsInBuild and victim:IsInBuild() then return end
+
         local attacker = dmg:GetAttacker()
         if not IsValid( attacker ) then return end
         if not attacker:IsPlayer() then return end
@@ -269,7 +272,7 @@ cfcEntityStubber.registerStub( function()
         if not IsValid( wep ) then return end
         if wep:GetClass() ~= BONK_GUN_CLASS then return end
 
-        bonkVictim( attacker, ent, dmg, wep )
+        bonkVictim( attacker, victim, dmg, wep )
     end )
 
 
