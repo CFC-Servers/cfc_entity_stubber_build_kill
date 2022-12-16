@@ -243,14 +243,12 @@ cfcEntityStubber.registerStub( function()
     weapon.Bonk.SelfDamage = 6 -- Damage dealt to self when shooting while in the air
 
 
+    if CLIENT then return end
+
     weapon._ShootBullet = weapon.ShootBullet or cfcEntityStubber.getWeapon( "bobs_gun_base" ).ShootBullet
     weapon.ShootBullet = function( self, damage, recoil, numBullets, spread )
         local ply = self:GetOwner()
         if not IsValid( ply ) or not ply:IsPlayer() then return end
-
-        if CLIENT then
-            return self:_ShootBullet( damage, recoil, numBullets, spread )
-        end
 
         -- Self-knockback
         if not ply:IsOnGround() then
