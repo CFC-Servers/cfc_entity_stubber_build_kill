@@ -104,9 +104,9 @@ local function bonkVictim( attacker, victim, dmg, wep )
 
     if IsValid( victim ) and victim:IsPlayer() then
         local dmgAmount = dmg:GetDamage()
-        local fromGround = attacker:IsOnGround() and victim:IsOnGround()
+        local fromGround = victim:IsOnGround()
 
-        -- When both players are on the ground, dmgForce is pointed downwards, which makes the launch weak
+        -- When the victim is on the ground, dmgForce is pointed downwards, which makes the launch weak
         if fromGround then
             dmgForce.z = math.abs( dmgForce.z )
         end
