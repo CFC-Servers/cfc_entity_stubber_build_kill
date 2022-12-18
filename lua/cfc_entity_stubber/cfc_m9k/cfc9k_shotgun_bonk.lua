@@ -93,7 +93,7 @@ local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
         damageMult = damageMult * wep.Bonk.PlayerForceAirMult
     end
 
-    local counterForce = counteractOpposingVelocity( victim, dmgForce )
+    local counterForce = counteractOpposingVelocity( victim, dmgForce ) * wep.Bonk.PlayerForceCounteractMult
     local forceStrength = wep.Bonk.PlayerForce * damageMult
     local force = dmgForce * forceStrength + counterForce
 
@@ -245,6 +245,7 @@ cfcEntityStubber.registerStub( function()
         weapon.Bonk.PlayerForceAirMult = 1.15 -- Multiplies against force strength if the victim is in the air when hit
         weapon.Bonk.PlayerForceAirZMult = 1 -- Makes air launches be more vertical, proportionally
         weapon.Bonk.PlayerForceAirZAdd = 0.1 -- Makes air launches be more vertical, additively
+        weapon.Bonk.PlayerForceCounteractMult = 0.8 -- How strongly (0-1) the victim's velocity will be counteracted by the launch, if they were moving opposite to it
         weapon.Bonk.PlayerForceIgnoreThreshold = 0.2 -- If the damage multiplier is below this, the player won't be launched
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
