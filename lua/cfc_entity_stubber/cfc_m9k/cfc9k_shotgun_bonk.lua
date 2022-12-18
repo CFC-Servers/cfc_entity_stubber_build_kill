@@ -89,6 +89,8 @@ local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
         z = z * wep.Bonk.PlayerForceAirZMult + mathSign( z ) * wep.Bonk.PlayerForceAirZAdd
         dmgForce.z = z
         dmgForce:Normalize()
+
+        damageMult = damageMult * wep.Bonk.PlayerForceAirMult
     end
 
     local counterForce = counteractOpposingVelocity( victim, dmgForce )
@@ -236,10 +238,11 @@ cfcEntityStubber.registerStub( function()
     weapon.Bonk = weapon.Bonk or {}
     weapon.Bonk.PlayerForce = 820 / 0.7 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
         weapon.Bonk.PlayerForceMultMax = 0.7 -- Damage mult (normal is 1) cannot exceed this value (otherwise could have massive launches from M9K damage spread, headshots, etc.)
-        weapon.Bonk.PlayerForceComboMult = 2.3 -- Multiplies against force strength if the victim is currently in a bonk state
+        weapon.Bonk.PlayerForceComboMult = 1.7 -- Multiplies against force strength if the victim is currently in a bonk state
         weapon.Bonk.PlayerForceGroundZMult = 0.9 -- Makes ground launches be more vertical, proportionally
         weapon.Bonk.PlayerForceGroundZAdd = 0.25 -- Makes ground launches be more vertical, additively
         weapon.Bonk.PlayerForceGroundZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
+        weapon.Bonk.PlayerForceAirMult = 1.15 -- Multiplies against force strength if the victim is in the air when hit
         weapon.Bonk.PlayerForceAirZMult = 1 -- Makes air launches be more vertical, proportionally
         weapon.Bonk.PlayerForceAirZAdd = 0.1 -- Makes air launches be more vertical, additively
         weapon.Bonk.PlayerForceIgnoreThreshold = 0.2 -- If the damage multiplier is below this, the player won't be launched
