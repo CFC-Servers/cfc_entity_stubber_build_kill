@@ -1,14 +1,9 @@
 AddCSLuaFile()
 
-local IMPACT_DAMAGE_ENABLED = true
-local IMPACT_DAMAGE_MULT = 10 / 20000
-local IMPACT_DAMAGE_MIN = 5
-local IMPACT_DAMAGE_MAX = 45
 local IMPACT_ACCELERATION_THRESHOLD = 7000
 local IMPACT_START_DELAY = 0.07
 local IMPACT_LIFETIME = 6
 local AIR_SHOTS_REFUND_AMMO = false -- Shooting a mid-air victim while they've been bonked refunds a single shot of ammo
-local BONK_GUN_CLASS = "m9k_ithacam37"
 
 local IsValid = IsValid
 
@@ -104,12 +99,13 @@ local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
     return force
 end
 
-local function bonkPlayer( attacker, victim, force )
+local function bonkPlayer( attacker, victim, wep, force )
     if not force then return end
 
     victim:SetVelocity( force )
 
-    if not IMPACT_DAMAGE_ENABLED then return end
+    if not wep.Bonk.ImpactEnabled then return end
+    local wepClass = wep:GetClass()
 
     timer.Simple( IMPACT_START_DELAY, function()
         if not IsValid( victim ) then return end
@@ -125,6 +121,8 @@ local function bonkPlayer( attacker, victim, force )
         bonkInfo.PrevVel = victim:GetVelocity()
         bonkInfo.IsBonked = true
         bonkInfo.ExpireTime = RealTime() + IMPACT_LIFETIME
+        bonkInfo.Weapon = wep
+        bonkInfo.WeaponClass = wepClass
     end )
 end
 
@@ -148,7 +146,7 @@ local function bonkVictim( attacker, victim, dmg, wep )
         else
             local force = getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
 
-            bonkPlayer( attacker, victim, force )
+            bonkPlayer( attacker, victim, wep, force )
         end
     else
         dmg:SetDamageForce( dmgForce * wep.Bonk.PropForceMult )
@@ -157,10 +155,17 @@ end
 
 local function handleImpact( ply, accel )
     local bonkInfo = ply.cfc9k_bonkInfo
-
-    local damage = math.Clamp( accel * IMPACT_DAMAGE_MULT, IMPACT_DAMAGE_MIN, IMPACT_DAMAGE_MAX )
     local attacker = IsValid( bonkInfo.Attacker ) and bonkInfo.Attacker or game.GetWorld()
-    local wep = attacker:GetWeapon( BONK_GUN_CLASS )
+    local wep = bonkInfo.Weapon
+
+    if not IsValid( wep ) then
+        wep = cfcEntityStubber.getWeapon( bonkInfo.WeaponClass )
+    end
+
+    local damageMult = wep.Bonk.ImpactDamageMult
+    local damageMin = wep.Bonk.ImpactDamageMin
+    local damageMax = wep.Bonk.ImpactDamageMax
+    local damage = math.Clamp( accel * damageMult, damageMin, damageMax )
 
     if not IsValid( wep ) then
         wep = attacker
@@ -177,6 +182,8 @@ local function handleImpact( ply, accel )
     bonkInfo.IsBonked = nil
     bonkInfo.PrevVel = nil
     bonkInfo.Attacker = nil
+    bonkInfo.Weapon = nil
+    bonkInfo.WeaponClass = nil
 end
 
 local function detectImpact( ply, dt )
@@ -195,6 +202,8 @@ local function detectImpact( ply, dt )
         bonkInfo.IsBonked = nil
         bonkInfo.PrevVel = nil
         bonkInfo.Attacker = nil
+        bonkInfo.Weapon = nil
+        bonkInfo.WeaponClass = nil
 
         return
     end
@@ -209,6 +218,8 @@ local function detectImpact( ply, dt )
             bonkInfo.IsBonked = nil
             bonkInfo.PrevVel = nil
             bonkInfo.Attacker = nil
+            bonkInfo.Weapon = nil
+            bonkInfo.WeaponClass = nil
         end
 
         return
@@ -219,7 +230,7 @@ end
 
 
 cfcEntityStubber.registerStub( function()
-    local weapon = cfcEntityStubber.getWeapon( BONK_GUN_CLASS )
+    local weapon = cfcEntityStubber.getWeapon( "m9k_ithacam37" )
 
     weapon.Purpose = ""
     weapon.CFC_Category = "Shotgun:Bonk"
@@ -236,6 +247,7 @@ cfcEntityStubber.registerStub( function()
     weapon.ShellTime = 0.7
 
     weapon.Bonk = weapon.Bonk or {}
+    weapon.Bonk.Enabled = true -- Enables bonking. Other weapons can 
     weapon.Bonk.PlayerForce = 800 / 0.7 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
         weapon.Bonk.PlayerForceMultMax = 0.7 -- Damage mult (normal is 1) cannot exceed this value (otherwise could have massive launches from M9K damage spread, headshots, etc.)
         weapon.Bonk.PlayerForceComboMult = 1.5 -- Multiplies against force strength if the victim is currently in a bonk state
@@ -251,6 +263,10 @@ cfcEntityStubber.registerStub( function()
     weapon.Bonk.PropForceMult = 15
     weapon.Bonk.SelfForce = Vector( 300, 300, 420 ) -- Self-knockback when shooting while in the air
     weapon.Bonk.SelfDamage = 6 -- Damage dealt to self when shooting while in the air
+    weapon.Bonk.ImpactEnabled = true
+        weapon.Bonk.ImpactDamageMult = 10 / 20000
+        weapon.Bonk.ImpactDamageMin = 5
+        weapon.Bonk.ImpactDamageMax = 45
 
 
     if CLIENT then return end
@@ -291,13 +307,11 @@ cfcEntityStubber.registerStub( function()
 
         local wep = attacker:GetActiveWeapon()
         if not IsValid( wep ) then return end
-        if wep:GetClass() ~= BONK_GUN_CLASS then return end
+        if not wep.Bonk or not wep.Bonk.Enabled then return end
 
         bonkVictim( attacker, victim, dmg, wep )
     end )
 
-
-    if not IMPACT_DAMAGE_ENABLED then return end
 
     hook.Add( "Think", "M9K_Stubber_BonkGun_DetectImpact", function()
         local dt = FrameTime()
