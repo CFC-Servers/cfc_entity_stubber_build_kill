@@ -2,7 +2,7 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
 	local weapons = {
-		"m9k_ithacam37"
+		"m9k_ithacam37" -- TODO: Either change this to a different shotgun, or remove this stub entirely. The ithica stub is now in cfc9k_shotgun_bonk.lua
 	}
 
 	for _, weaponClass in ipairs( weapons ) do
