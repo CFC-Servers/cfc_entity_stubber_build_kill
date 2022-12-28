@@ -3,7 +3,7 @@ AddCSLuaFile()
 local IMPACT_ACCELERATION_THRESHOLD = 7000
 local IMPACT_START_DELAY = 0.07
 local IMPACT_LIFETIME = 6
-local AIR_SHOTS_REFUND_AMMO = false -- Shooting a mid-air victim while they've been bonked refunds a single shot of ammo
+local AIR_SHOT_REFUND_COOLDOWN = 0.01
 
 local IsValid = IsValid
 
@@ -35,21 +35,28 @@ end
 -- Refunds a single shot of ammo if the victim is in the air due to being bonked
 local function refundAirShot( attacker, victim, wep )
     if not AIR_SHOTS_REFUND_AMMO then return end
-    if not attacker.cfc9k_bonkCanRefund then return end
-
-    attacker.cfc9k_bonkCanRefund = false -- Only refund once per shot, so shooting two players doesn't give extra ammo
-
+    if attacker.cfc9k_bonkCannotRefund then return end
     if not IsValid( wep ) then return end
     if victim:IsOnGround() then return end
 
     local bonkInfo = victim.cfc9k_bonkInfo or {}
     if not bonkInfo.IsBonked then return end
 
+    local amountToRefund = wep.Bonk.AirShotsRefundAmmo
+    if not amountToRefund or amountToRefund <= 0 then return end
+
     local clipAmmo = wep:Clip1()
     local clipMax = wep.Primary.ClipSize
     if clipAmmo >= clipMax then return end
 
-    wep:SetClip1( clipAmmo + 1 )
+    local newClipAmmount = math.min( clipAmmo + amountToRefund, clipMax )
+    wep:SetClip1( newClipAmmount )
+    attacker.cfc9k_bonkCannotRefund = true -- Only refund once per shot, so shooting two players doesn't give extra ammo
+
+    timer.Simple( AIR_SHOT_REFUND_COOLDOWN, function()
+        if not IsValid( attacker ) then return end
+        attacker.cfc9k_bonkCannotRefund = false
+    end )
 end
 
 local function counteractOpposingVelocity( ply, forceDir )
@@ -263,6 +270,7 @@ cfcEntityStubber.registerStub( function()
     weapon.Bonk.PropForceMult = 15
     weapon.Bonk.SelfForce = Vector( 300, 300, 420 ) -- Self-knockback when shooting while in the air
     weapon.Bonk.SelfDamage = 6 -- Damage dealt to self when shooting while in the air
+    weapon.Bonk.AirShotsRefundAmmo = 0 -- Ammo refunded when shooting a midair, currently bonked target
     weapon.Bonk.ImpactEnabled = true
         weapon.Bonk.ImpactDamageMult = 10 / 20000
         weapon.Bonk.ImpactDamageMin = 5
@@ -286,10 +294,6 @@ cfcEntityStubber.registerStub( function()
                 ply:TakeDamage( selfDamage, ply, self )
                 ply:EmitSound( "physics/body/body_medium_impact_soft" .. math.random( 1, 7 ) .. ".wav", 85 )
             end
-        end
-
-        if AIR_SHOTS_REFUND_AMMO then
-            ply.cfc9k_bonkCanRefund = true
         end
 
         return self:_ShootBullet( damage, recoil, numBullets, spread )
