@@ -1,7 +1,6 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
-    local weapon = cfcEntityStubber.getWeapon( "cw_ragingbull" )
+cfcEntityStubber.registerStub( "cw_ragingbull", function( weapon )
     weapon.HipSpread = 0.009
     weapon.AimSpread = 0.009
     weapon.MaxSpreadInc = 0.03

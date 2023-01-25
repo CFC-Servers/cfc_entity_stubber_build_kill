@@ -1,6 +1,5 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
-    local weapon = cfcEntityStubber.getWeapon( "bobs_gun_base" )
+cfcEntityStubber.registerStub( "bobs_gun_base", function( weapon )
     weapon.ShouldDoMoveSpread = false
 end )

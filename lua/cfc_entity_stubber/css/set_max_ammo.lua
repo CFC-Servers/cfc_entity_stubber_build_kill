@@ -1,6 +1,7 @@
 AddCSLuaFile()
+
 -- Stupid method but these fucking weapons don't use a base so it's the only way.
-local cssWeapons = {
+local weapons = {
     "weapon_elite",
     "weapon_p228",
     "weapon_glock",
@@ -27,11 +28,6 @@ local cssWeapons = {
     "weapon_scout"
 }
 
-cfcEntityStubber.registerStub( function()
-    for _, weaponClass in ipairs( cssWeapons ) do
-        local weapon = cfcEntityStubber.getWeapon( weaponClass )
-        if IsValid( weapon ) then
-            weapon.Primary.MaxAmmo = weapon.Primary.MaxAmmo * 10
-        end
-    end
+cfcEntityStubber.registerStub( weapons, function( weapon )
+    weapon.Primary.MaxAmmo = weapon.Primary.MaxAmmo * 10
 end )

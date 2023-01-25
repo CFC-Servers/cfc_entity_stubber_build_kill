@@ -1,6 +1,6 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
+do
     local weapons = {
         "m9k_mp5",
         "m9k_mp7",
@@ -8,8 +8,7 @@ cfcEntityStubber.registerStub( function()
         "m9k_magpulpdr"
     }
 
-    for _, weaponClass in ipairs( weapons ) do
-        local weapon = cfcEntityStubber.getWeapon( weaponClass )
+    cfcEntityStubber.registerStub( weapons, function( weapon )
         weapon.Purpose = ""
         weapon.CFC_Category = "SMG:Base"
 
@@ -21,17 +20,16 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.Damage = 20
         weapon.Primary.Spread = 0.036
         weapon.Primary.IronAccuracy = 0.02
-    end
-end )
+    end )
+end
 
-cfcEntityStubber.registerStub( function()
+do
     local weapons = {
         "m9k_mp5",
         "m9k_magpulpdr"
     }
 
-    for _, weaponClass in ipairs( weapons ) do
-        local weapon = cfcEntityStubber.getWeapon( weaponClass )
+    cfcEntityStubber.registerStub( weapons, function( weapon )
         weapon.Purpose = ""
         weapon.CFC_Category = "SMG:Base"
 
@@ -39,5 +37,5 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.RPM = 850
         weapon.Primary.Spread = 0.04
         weapon.Primary.IronAccuracy = 0.03
-    end
-end )
+    end )
+end

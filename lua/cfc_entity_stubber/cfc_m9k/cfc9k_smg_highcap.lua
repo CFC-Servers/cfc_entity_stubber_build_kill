@@ -1,14 +1,13 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
+do
     local weapons = {
         "m9k_bizonp19",
         "m9k_smgp90",
         "m9k_thompson"
     }
 
-    for _, weaponClass in ipairs( weapons ) do
-        local weapon = cfcEntityStubber.getWeapon( weaponClass )
+    cfcEntityStubber.registerStub( weapons, function( weapon )
         weapon.Purpose = ""
         weapon.CFC_Category = "SMG:HighCap"
 
@@ -20,5 +19,5 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.Damage = 19
         weapon.Primary.Spread = 0.04
         weapon.Primary.IronAccuracy = 0.03
-    end
-end )
+    end )
+end
