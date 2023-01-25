@@ -1,7 +1,6 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
-    local weapon = cfcEntityStubber.getWeapon( "cw_l115" )
+cfcEntityStubber.registerStub( "cw_l115", function( weapon )
     weapon.ACF_DamageMult = 15
     weapon.damage = 150
 end )

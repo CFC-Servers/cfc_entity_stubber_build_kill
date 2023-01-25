@@ -1,6 +1,6 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
+do
     local weapons = {
         "m9k_dragunov",
         "m9k_psg1",
@@ -8,8 +8,7 @@ cfcEntityStubber.registerStub( function()
         "m9k_svt40"
     }
 
-    for _, weaponClass in ipairs( weapons ) do
-        local weapon = cfcEntityStubber.getWeapon( weaponClass )
+    cfcEntityStubber.registerStub( weapons, function( weapon )
         weapon.Purpose = ""
         weapon.CFC_Category = "Sniper:Semi"
 
@@ -23,5 +22,5 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.SpreadZoomed = 0.0001
         weapon.Primary.Automatic = false
         weapon.Primary.DefaultClip = 1000
-    end
-end )
+    end )
+end

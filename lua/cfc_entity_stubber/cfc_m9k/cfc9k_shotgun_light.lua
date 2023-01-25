@@ -1,13 +1,12 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
+do
     local weapons = {
         "m9k_m3",
         "m9k_remington870"
     }
 
-    for _, weaponClass in ipairs( weapons ) do
-        local weapon = cfcEntityStubber.getWeapon( weaponClass )
+    cfcEntityStubber.registerStub( weapons, function( weapon )
         weapon.Purpose = ""
         weapon.CFC_Category = "Shotgun:Light"
 
@@ -20,5 +19,5 @@ cfcEntityStubber.registerStub( function()
         weapon.Primary.Damage = 9
         weapon.Primary.Spread = 0.05
         weapon.Primary.IronAccuracy = 0.016
-    end
-end )
+    end )
+end

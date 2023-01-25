@@ -1,7 +1,6 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
-    local weapon = cfcEntityStubber.getWeapon( "cw_g4p_g2contender" )
+cfcEntityStubber.registerStub( "cw_g4p_g2contender", function( weapon )
     weapon.Attachments = {}
     weapon.Recoil = 60
     weapon.Shots = 20
@@ -11,9 +10,11 @@ cfcEntityStubber.registerStub( function()
     weapon.ClumpSpread = 0.1
     weapon.ReloadSpeed = 0.55
 
+    if not SERVER then return end
+
     local IsValid = IsValid
 
-    hook.Add( "EntityTakeDamage", "CW_Stubber_BuffWhateverGunForce", function( ent, dmg )
+    hook.Add( "EntityTakeDamage", "EntityStubber_BuffContenderForce", function( ent, dmg )
         local attacker = dmg:GetAttacker()
         if not IsValid( attacker ) then return end
         if not attacker:IsPlayer() then return end

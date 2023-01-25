@@ -1,7 +1,6 @@
 AddCSLuaFile()
 
-cfcEntityStubber.registerStub( function()
-    local weapon = cfcEntityStubber.getWeapon( "cw_m249_official" )
+cfcEntityStubber.registerStub( "cw_m249_official", function( weapon )
     weapon.HipSpread = 0.02
     weapon.VelocitySensitivity = 2.0
     weapon.FireDelay = 0.1
