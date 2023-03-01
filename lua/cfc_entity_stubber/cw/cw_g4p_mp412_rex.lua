@@ -11,8 +11,9 @@ cfcEntityStubber.registerStub( function()
     weapon.AimSpread = 0.0005
     weapon.SpreadPerShot = 0
     weapon.Damage = 80
-    weapon.SpeedDec = 0
     weapon.HolsterUnderwater = false
     weapon.FireDelay = 0.595
+    weapon.QuickScopeSpreadIncrease = 0
+    weapon.RecoilToSpread = 0
     weapon.NoRicochet = {[MAT_FLESH] = true, [MAT_ANTLION] = false, [MAT_BLOODYFLESH] = false, [MAT_DIRT] = false, [MAT_SAND] = false, [MAT_GLASS] = false, [MAT_ALIENFLESH] = false, [MAT_GRASS] = false}
 end)

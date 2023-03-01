@@ -8,5 +8,4 @@ cfcEntityStubber.registerStub( function()
     weapon.AimSpread = 0.005
     weapon.VelocitySensitivity = 0.7
     weapon.Damage = 80
-    weapon.ACF_DamageMult = 10
 end )
