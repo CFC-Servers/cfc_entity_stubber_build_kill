@@ -3,5 +3,4 @@ AddCSLuaFile()
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_ump45" )
     weapon.ReloadSpeed = 1.6
-    weapon.ACF_DamageMult = 15
 end )

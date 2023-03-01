@@ -5,5 +5,4 @@ cfcEntityStubber.registerStub( function()
     weapon.SpreadCooldown = 0.05
     weapon.HipSpread = 0.05
     weapon.damage = 125
-    weapon.ACF_DamageMult = 20
 end )
