@@ -4,7 +4,7 @@ cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_g4p_g2contender" )
     weapon.Attachments = {}
     weapon.Recoil = 60
-    weapon.Shots = 20
+    weapon.Shots = 15
     weapon.AimSpread = 0.05
     weapon.HipSpread = 0.1
     weapon.SpreadPerShot = 0.01
@@ -26,7 +26,7 @@ cfcEntityStubber.registerStub( function()
         if IsValid( ent ) and ent:IsPlayer() then
             dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
         else
-            dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
+            dmg:SetDamageForce( dmg:GetDamageForce() * 7 )
         end
     end )
 end )
