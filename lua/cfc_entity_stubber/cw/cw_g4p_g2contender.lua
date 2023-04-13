@@ -10,6 +10,7 @@ cfcEntityStubber.registerStub( function()
     weapon.SpreadPerShot = 0.01
     weapon.ClumpSpread = 0.1
     weapon.ReloadSpeed = 0.55
+    weapon.Damage = 20
 
     local IsValid = IsValid
 
@@ -26,7 +27,7 @@ cfcEntityStubber.registerStub( function()
         if IsValid( ent ) and ent:IsPlayer() then
             dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
         else
-            dmg:SetDamageForce( dmg:GetDamageForce() * 7 )
+            dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
         end
     end )
 end )
