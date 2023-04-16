@@ -1,5 +1,28 @@
-AddCSLuaFile() -- All stubber files automatically get include()'ed on shared, do this to avoid an error
+AddCSLuaFile()
+
+net.Receive( "CFC9k_BonkGun_PlayTweakedSound", function()
+    local pos = net.ReadVector()
+    local path = net.ReadString()
+    local volume = net.ReadFloat()
+    local pitch = net.ReadFloat()
+
+    -- sound.PlayFile doesn't properly cut off distant sounds
+    if EyePos():Distance( pos ) > 1000 then return end
+
+    sound.PlayFile( "sound/" .. path, "3d stereo noblock noplay", function( station )
+        if not IsValid( station ) then return end
+
+        station:SetPos( pos )
+        station:SetVolume( volume )
+        station:SetPlaybackRate( pitch )
+        station:Play()
+    end )
+end )
+
 if CLIENT then return end
+
+
+util.AddNetworkString( "CFC9k_BonkGun_PlayTweakedSound" )
 
 
 local IMPACT_ACCELERATION_THRESHOLD = 7000
@@ -32,6 +55,38 @@ local function enoughToKill( ply, dmgAmount )
     end
 
     return false
+end
+
+local function playTweakedSound( ent, path, volume, pitch )
+    if not IsValid( ent ) then return end
+    if not path then return end
+
+    local pos = ent:WorldSpaceCenter()
+    volume = volume or 1
+    pitch = pitch or 1
+
+    -- Volume can't be set higher than 1 without using sound.PlayFile on client
+    net.Start( "CFC9k_BonkGun_PlayTweakedSound" )
+        net.WriteVector( pos )
+        net.WriteString( path )
+        net.WriteFloat( volume )
+        net.WriteFloat( pitch )
+    net.Broadcast()
+end
+
+local function playBonkSound( victim )
+    local pitchOffset = math.Rand( -0.1, 0.1 )
+
+    playTweakedSound( victim, "garrysmod/balloon_pop_cute.wav", 1.25, 0.7 + pitchOffset )
+    playTweakedSound( victim, "physics/glass/glass_sheet_impact_hard1.wav", 1.25, 1.8 + pitchOffset )
+end
+
+local function playBonkImpactSound( attacker, victim )
+    playTweakedSound( victim, "physics/flesh/flesh_impact_bullet" .. math.random( 1, 5 ) .. ".wav", 1.25, 1 )
+
+    if attacker and attacker:IsPlayer() then
+        attacker:EmitSound( "npc/headcrab_poison/ph_wallhit2.wav", 50, 100, 1 )
+    end
 end
 
 -- Refunds a single shot of ammo if the victim is in the air due to being bonked
@@ -112,6 +167,7 @@ local function bonkPlayer( attacker, victim, wep, force )
     if not force then return end
 
     victim:SetVelocity( force )
+    playBonkSound( victim )
 
     if not wep.Bonk.ImpactEnabled then return end
     local wepClass = wep:GetClass()
@@ -181,7 +237,7 @@ local function handleImpact( ply, accel )
     end
 
     if not ply:IsOnGround() then
-        ply:EmitSound( "physics/body/body_medium_impact_hard" .. math.random( 1, 6 ) .. ".wav", 85 )
+        playBonkImpactSound( attacker, ply )
     end
 
     -- Setting the inflictor to wep ensures a proper killfeed icon, and prevents the bonk effect from re-applying since normal gunshots have inflictor == attacker
