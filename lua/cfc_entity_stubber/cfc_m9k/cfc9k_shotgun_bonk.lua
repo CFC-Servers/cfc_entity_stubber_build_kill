@@ -14,11 +14,11 @@ cfcEntityStubber.registerStub( function()
     weapon.Primary.KickUp = 14
     weapon.Primary.KickDown = 6
     weapon.Primary.KickHorizontal = 7
-    weapon.Primary.NumShots = 10
+    weapon.Primary.NumShots = 12
     weapon.Primary.Damage = 2
-    weapon.Primary.Spread = 0.13
-    weapon.Primary.IronAccuracy = 0.1
-    weapon.ShellTime = 0.7
+    weapon.Primary.Spread = 0.1
+    weapon.Primary.IronAccuracy = 0.09
+    weapon.ShellTime = 0.65
 
     --[[
         - The following values can be added to any other hitscan weapon to enable bonking.
@@ -27,11 +27,12 @@ cfcEntityStubber.registerStub( function()
     --]]
     weapon.Bonk = weapon.Bonk or {}
     weapon.Bonk.Enabled = true -- Enables bonking. Other weapons can 
-    weapon.Bonk.PlayerForce = 800 / 0.7 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
+    weapon.Bonk.PlayerForce = 750 / 0.7 -- Soft-maximum launch strength for when all bullets hit, assuming no special hitgroups (e.g. only hit the chest)
+        weapon.Bonk.PlayerForceAdd = 100 -- Flat addition to the launch strength, after the multiplier is applied
         weapon.Bonk.PlayerForceMultMax = 0.7 -- Damage mult (normal is 1) cannot exceed this value (otherwise could have massive launches from M9K damage spread, headshots, etc.)
-        weapon.Bonk.PlayerForceComboMult = 1.5 -- Multiplies against force strength if the victim is currently in a bonk state
+        weapon.Bonk.PlayerForceComboMult = 1.75 -- Multiplies against force strength if the victim is currently in a bonk state
         weapon.Bonk.PlayerForceGroundZMult = 0.9 -- Makes ground launches be more vertical, proportionally
-        weapon.Bonk.PlayerForceGroundZAdd = 0.25 -- Makes ground launches be more vertical, additively
+        weapon.Bonk.PlayerForceGroundZAdd = 0.3 -- Makes ground launches be more vertical, additively
         weapon.Bonk.PlayerForceGroundZMin = 250 -- Minimim z-component of launch force when on the ground. Gmod keeps players grounded unless the the z-vel is ~248.13 or above
         weapon.Bonk.PlayerForceAirMult = 1.15 -- Multiplies against force strength if the victim is in the air when hit
         weapon.Bonk.PlayerForceAirZMult = 1 -- Makes air launches be more vertical, proportionally
@@ -42,7 +43,7 @@ cfcEntityStubber.registerStub( function()
     weapon.Bonk.PropForceMult = 15
     weapon.Bonk.AirShotsRefundAmmo = 0 -- Ammo refunded when shooting a midair, currently bonked target. Requires ImpactEnabled to be true.
     weapon.Bonk.ImpactEnabled = true -- If enabled, victims will take damage upon impacting a surface after getting bonked. This is also what enables tracking of the 'bonk status' of victims.
-        weapon.Bonk.ImpactDamageMult = 10 / 20000
+        weapon.Bonk.ImpactDamageMult = 12 / 20000
         weapon.Bonk.ImpactDamageMin = 5
         weapon.Bonk.ImpactDamageMax = 45
 

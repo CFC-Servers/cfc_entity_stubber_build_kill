@@ -153,7 +153,7 @@ local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
     end
 
     local counterForce = counteractOpposingVelocity( victim, dmgForce ) * wep.Bonk.PlayerForceCounteractMult
-    local forceStrength = wep.Bonk.PlayerForce * damageMult
+    local forceStrength = wep.Bonk.PlayerForce * damageMult + wep.Bonk.PlayerForceAdd
     local force = dmgForce * forceStrength + counterForce
 
     if fromGround then
