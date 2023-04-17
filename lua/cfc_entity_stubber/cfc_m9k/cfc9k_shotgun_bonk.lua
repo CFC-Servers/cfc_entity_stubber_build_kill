@@ -39,6 +39,8 @@ cfcEntityStubber.registerStub( function()
         weapon.Bonk.PlayerForceAirZAdd = 0.1 -- Makes air launches be more vertical, additively
         weapon.Bonk.PlayerForceCounteractMult = 0.8 -- How strongly (0-1) the victim's velocity will be counteracted by the launch, if they were moving opposite to it
         weapon.Bonk.PlayerForceIgnoreThreshold = 0.2 -- If the damage multiplier is below this, the player won't be launched
+        weapon.Bonk.NPCForceMult = 1.75 -- Multiplies against launch strength for NPCs
+        weapon.Bonk.NPCForceGroundHorizontalMult = 3 -- Multiplies against horizontal launch strength for NPCs when on the ground
     weapon.Bonk.PlayerForceMultRagdoll = 300
     weapon.Bonk.PropForceMult = 15
     weapon.Bonk.AirShotsRefundAmmo = 0 -- Ammo refunded when shooting a midair, currently bonked target. Requires ImpactEnabled to be true.
