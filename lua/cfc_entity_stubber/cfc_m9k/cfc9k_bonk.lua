@@ -25,6 +25,8 @@ if CLIENT then return end
 util.AddNetworkString( "CFC9k_BonkGun_PlayTweakedSound" )
 
 
+local bonkedEnts = {}
+
 local IMPACT_ACCELERATION_THRESHOLD = 7000
 local IMPACT_START_DELAY = 0.07
 local IMPACT_LIFETIME = 6
@@ -47,7 +49,7 @@ end
 
 local function enoughToKill( ply, dmgAmount )
     local health = ply:Health()
-    local armor = ply:Armor()
+    local armor = ply:IsPlayer() and ply:Armor() or 0
 
     -- Note: this currently doesn't check for godmode
     if dmgAmount >= health + armor then
@@ -138,18 +140,28 @@ local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
 
     dmgForce = dmgForce:GetNormalized() -- Normalize without modifying original argument
 
-    if fromGround then
-        local z = dmgForce.z
-        z = z * wep.Bonk.PlayerForceGroundZMult + wep.Bonk.PlayerForceGroundZAdd
-        dmgForce.z = z
-        dmgForce:Normalize()
-    else
-        local z = dmgForce.z
-        z = z * wep.Bonk.PlayerForceAirZMult + mathSign( z ) * wep.Bonk.PlayerForceAirZAdd
-        dmgForce.z = z
-        dmgForce:Normalize()
+    if victim:IsPlayer() then
+        if fromGround then
+            local z = dmgForce.z
+            z = z * wep.Bonk.PlayerForceGroundZMult + wep.Bonk.PlayerForceGroundZAdd
+            dmgForce.z = z
+            dmgForce:Normalize()
+        else
+            local z = dmgForce.z
+            z = z * wep.Bonk.PlayerForceAirZMult + mathSign( z ) * wep.Bonk.PlayerForceAirZAdd
+            dmgForce.z = z
+            dmgForce:Normalize()
 
-        damageMult = damageMult * wep.Bonk.PlayerForceAirMult
+            damageMult = damageMult * wep.Bonk.PlayerForceAirMult
+        end
+    else
+        if fromGround then
+            dmgForce.z = math.abs( dmgForce.z )
+            dmgForce.x = dmgForce.x * wep.Bonk.NPCForceGroundHorizontalMult
+            dmgForce.y = dmgForce.y * wep.Bonk.NPCForceGroundHorizontalMult
+        end
+
+        dmgForce = dmgForce * wep.Bonk.NPCForceMult
     end
 
     local counterForce = counteractOpposingVelocity( victim, dmgForce ) * wep.Bonk.PlayerForceCounteractMult
@@ -163,10 +175,15 @@ local function getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
     return force
 end
 
-local function bonkPlayer( attacker, victim, wep, force )
+local function bonkPlayerOrNPC( attacker, victim, wep, force )
     if not force then return end
 
-    victim:SetVelocity( force )
+    if victim:IsPlayer() then
+        victim:SetVelocity( force )
+    else
+        victim:SetVelocity( victim:GetVelocity() + force )
+    end
+
     playBonkSound( victim )
 
     if not wep.Bonk.ImpactEnabled then return end
@@ -188,13 +205,14 @@ local function bonkPlayer( attacker, victim, wep, force )
         bonkInfo.ExpireTime = RealTime() + IMPACT_LIFETIME
         bonkInfo.Weapon = wep
         bonkInfo.WeaponClass = wepClass
+        bonkedEnts[victim] = true
     end )
 end
 
 local function bonkVictim( attacker, victim, dmg, wep )
     local dmgForce = dmg:GetDamageForce()
 
-    if IsValid( victim ) and victim:IsPlayer() then
+    if IsValid( victim ) and ( victim:IsPlayer() or victim:IsNPC() ) then
         local dmgAmount = dmg:GetDamage()
         local fromGround = victim:IsOnGround()
 
@@ -211,15 +229,15 @@ local function bonkVictim( attacker, victim, dmg, wep )
         else
             local force = getBonkForce( victim, wep, dmgForce, dmgAmount, fromGround )
 
-            bonkPlayer( attacker, victim, wep, force )
+            bonkPlayerOrNPC( attacker, victim, wep, force )
         end
     else
         dmg:SetDamageForce( dmgForce * wep.Bonk.PropForceMult )
     end
 end
 
-local function handleImpact( ply, accel )
-    local bonkInfo = ply.cfc9k_bonkInfo
+local function handleImpact( ent, accel )
+    local bonkInfo = ent.cfc9k_bonkInfo
     local attacker = IsValid( bonkInfo.Attacker ) and bonkInfo.Attacker or game.GetWorld()
     local wep = bonkInfo.Weapon
 
@@ -236,29 +254,33 @@ local function handleImpact( ply, accel )
         wep = attacker
     end
 
-    if not ply:IsOnGround() then
-        playBonkImpactSound( attacker, ply )
+    if not ent:IsOnGround() then
+        playBonkImpactSound( attacker, ent )
     end
 
     -- Setting the inflictor to wep ensures a proper killfeed icon, and prevents the bonk effect from re-applying since normal gunshots have inflictor == attacker
-    ply:SetLastHitGroup( HITGROUP_GENERIC )
-    ply:TakeDamage( damage, attacker, wep )
+    ent:TakeDamage( damage, attacker, wep )
+
+    if ent:IsPlayer() then
+        ent:SetLastHitGroup( HITGROUP_GENERIC )
+    end
 
     bonkInfo.IsBonked = nil
     bonkInfo.PrevVel = nil
     bonkInfo.Attacker = nil
     bonkInfo.Weapon = nil
     bonkInfo.WeaponClass = nil
+    bonkedEnts[ent] = nil
 end
 
-local function detectImpact( ply, dt )
-    local bonkInfo = ply.cfc9k_bonkInfo
+local function detectImpact( ent, dt )
+    local bonkInfo = ent.cfc9k_bonkInfo
     if not bonkInfo or not bonkInfo.IsBonked then return end
 
     local prevVel = bonkInfo.PrevVel
 
     if not prevVel then
-        bonkInfo.PrevVel = ply:GetVelocity()
+        bonkInfo.PrevVel = ent:GetVelocity()
 
         return
     end
@@ -269,28 +291,30 @@ local function detectImpact( ply, dt )
         bonkInfo.Attacker = nil
         bonkInfo.Weapon = nil
         bonkInfo.WeaponClass = nil
+        bonkedEnts[ent] = nil
 
         return
     end
 
-    local curVel = ply:GetVelocity()
+    local curVel = ent:GetVelocity()
     local velDiff = curVel - prevVel
     local accel = velDiff:Length() / dt
     bonkInfo.PrevVel = curVel
 
     if accel < IMPACT_ACCELERATION_THRESHOLD then -- Not enough acceleration to be an impact
-        if ply:IsOnGround() then -- Clear bonk status if ply landed on the ground smoothly or never launched up
+        if ent:IsOnGround() then -- Clear bonk status if ent landed on the ground smoothly or never launched up
             bonkInfo.IsBonked = nil
             bonkInfo.PrevVel = nil
             bonkInfo.Attacker = nil
             bonkInfo.Weapon = nil
             bonkInfo.WeaponClass = nil
+            bonkedEnts[ent] = nil
         end
 
         return
     end
 
-    handleImpact( ply, accel )
+    handleImpact( ent, accel )
 end
 
 
@@ -300,7 +324,7 @@ hook.Add( "EntityTakeDamage", "M9K_Stubber_Bonk_YeetVictim", function( victim, d
 
     local attacker = dmg:GetAttacker()
     if not IsValid( attacker ) then return end
-    if not attacker:IsPlayer() then return end
+    if not attacker:IsPlayer() and not victim:IsNPC() then return end
 
     if dmg:GetInflictor() ~= attacker then return end -- Prevent turrets and etc from bonking.
 
@@ -313,11 +337,8 @@ end )
 
 hook.Add( "Think", "M9K_Stubber_Bonk_DetectImpact", function()
     local dt = FrameTime()
-    local plys = player.GetAll()
 
-    for i = 1, #plys do
-        local ply = plys[i]
-
-        detectImpact( ply, dt )
+    for ent in pairs( bonkedEnts ) do
+        detectImpact( ent, dt )
     end
 end )
