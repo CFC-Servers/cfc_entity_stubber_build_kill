@@ -33,6 +33,7 @@ local IMPACT_LIFETIME = 6
 local AIR_SHOT_REFUND_COOLDOWN = 0.01
 
 local IsValid = IsValid
+local VECTOR_ZERO = Vector( 0, 0, 0 )
 
 
 local function mathSign( x )
@@ -122,7 +123,7 @@ local function counteractOpposingVelocity( ply, forceDir )
     local plyVel = ply:GetVelocity()
     local dot = plyVel:Dot( forceDir )
 
-    if dot >= 0 then return Vector( 0, 0, 0 ) end
+    if dot >= 0 then return VECTOR_ZERO end
 
     return -dot * forceDir
 end
