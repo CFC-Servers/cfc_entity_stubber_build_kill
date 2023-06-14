@@ -318,7 +318,8 @@ local function detectImpact( ent, dt )
 end
 
 
-hook.Add( "EntityTakeDamage", "M9K_Stubber_Bonk_YeetVictim", function( victim, dmg )
+hook.Add( "PostEntityTakeDamage", "M9K_Stubber_Bonk_YeetVictim", function( victim, dmg, took )
+    if not took then return end
     if not IsValid( victim ) then return end
     if isBuildPlayer( victim ) then return end
 
