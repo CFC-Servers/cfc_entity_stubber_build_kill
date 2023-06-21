@@ -326,7 +326,7 @@ hook.Add( "PostEntityTakeDamage", "M9K_Stubber_Bonk_YeetVictim", function( victi
 
     local attacker = dmg:GetAttacker()
     if not IsValid( attacker ) then return end
-    if not attacker:IsPlayer() and not victim:IsNPC() then return end
+    if not attacker:IsPlayer() or not victim:IsNPC() then return end
 
     if dmg:GetInflictor() ~= attacker then return end -- Prevent turrets and etc from bonking.
 
