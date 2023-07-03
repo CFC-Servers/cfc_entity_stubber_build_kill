@@ -7,6 +7,7 @@ cfcEntityStubber.registerStub( function()
         DamageMult = 7.5,
         AimSpreadMult = 1.3
     }
-
+    function attachment:attachFunc() end
+    function attachment:detachFunc() end
     cfcEntityStubber.applyAttachmentChange( attachment )
 end )
