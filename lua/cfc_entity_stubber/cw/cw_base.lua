@@ -5,6 +5,7 @@ cfcEntityStubber.registerStub( function()
     local cwBase = cfcEntityStubber.getWeapon( "cw_base" )
     cwBase.HolsterOnLadder = false
     cwBase.NearWallEnabled = false
+    cwBase.QuickScopeSpreadIncrease = 0
     cwBase.scaleSensitivityToSpread = false
 
     if CLIENT then
