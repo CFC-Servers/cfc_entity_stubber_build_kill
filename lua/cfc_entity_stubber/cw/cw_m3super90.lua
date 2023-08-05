@@ -9,4 +9,6 @@ cfcEntityStubber.registerStub( function()
     weapon.ClumpSpread = 0.04
     weapon.recoil = 4
     weapon.FireDelay = 0.8
+    weapon.DeployTime = 0
+    weapon.HolsterTime = 0
 end )
