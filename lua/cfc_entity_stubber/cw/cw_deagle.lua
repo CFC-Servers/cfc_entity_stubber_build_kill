@@ -9,4 +9,6 @@ cfcEntityStubber.registerStub( function()
     weapon.VelocitySensitivity = 0.7
     weapon.Damage = 80
     weapon.ACF_DamageMult = 10
+    weapon.DeployTime = 0
+    weapon.HolsterTime = 0
 end )
