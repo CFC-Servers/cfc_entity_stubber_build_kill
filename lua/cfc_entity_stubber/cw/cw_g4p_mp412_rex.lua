@@ -9,11 +9,10 @@ cfcEntityStubber.registerStub( function()
     weapon.SpeedDec = 0
     weapon.HipSpread = 0.001
     weapon.AimSpread = 0.0005
-    weapon.SpreadPerShot = 0
+    weapon.SpreadPerShot = 0.0001
     weapon.Damage = 80
     weapon.HolsterUnderwater = false
     weapon.FireDelay = 0.595
-    weapon.QuickScopeSpreadIncrease = 0
     weapon.RecoilToSpread = 0
     weapon.ACF_DamageMult = 10
     weapon.DeployTime = 0

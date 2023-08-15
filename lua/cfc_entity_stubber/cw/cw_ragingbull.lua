@@ -6,7 +6,7 @@ cfcEntityStubber.registerStub( function()
     weapon.AimSpread = 0.005
     weapon.MaxSpreadInc = 0.01
     weapon.VelocitySensitivity = 0
-    weapon.SpreadPerShot = 0.01
+    weapon.SpreadPerShot = 0.0001
     weapon.Damage = 70
     weapon.ACF_DamageMult = 6
     weapon.DeployTime = 0
