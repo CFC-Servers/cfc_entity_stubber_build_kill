@@ -12,6 +12,6 @@ cfcEntityStubber.registerStub( function()
     weapon.ReloadSpeed = 1.3
     weapon.VelocitySensitivity = 0.1
     weapon.zoomLevels = {
-		2, 2, 2
-	}
+        2, 2, 2
+    }
 end )
