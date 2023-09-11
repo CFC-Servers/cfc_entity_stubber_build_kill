@@ -6,4 +6,5 @@ cfcEntityStubber.registerStub( function()
     weapon.HolsterTime = 0
     weapon.VelocitySensitivity = 0.2
     weapon.Damage = 25
+    weapon.ReloadSpeed = 1.2
 end )
