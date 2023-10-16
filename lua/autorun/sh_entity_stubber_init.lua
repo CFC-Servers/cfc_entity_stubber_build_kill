@@ -43,12 +43,18 @@ do
         m9k_sent_nuke_radiation = true,
     }
 
+    local function isAmmo( class )
+        return string.StartsWith( class, "m9k_ammo" )
+    end
+
     hook.Add( "PreRegisterSENT", "CFC_EntityStubber_DisableM9kSENTs", function( _, class )
         if badClasses[class] then return false end
+        if isAmmo( class ) then return false end
     end )
 
     hook.Add( "PlayerSpawnSENT", "CFC_EntityStubber_DisableM9kSENTs", function( _, class )
         if badClasses[class] then return false end
+        if isAmmo( class ) then return false end
     end )
 end
 
