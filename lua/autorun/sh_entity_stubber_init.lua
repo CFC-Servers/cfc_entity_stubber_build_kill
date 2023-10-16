@@ -1,6 +1,3 @@
-AddCSLuaFile( "cfc_entity_stubber/main_loader.lua" )
-include( "cfc_entity_stubber/main_loader.lua" )
-
 -- Disable bad sweps
 do
     local badClasses = {
@@ -17,6 +14,14 @@ do
     }
 
     hook.Add( "PreRegisterSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( _, class )
+        if badClasses[class] then return false end
+    end )
+
+    hook.Add( "PlayerSpawnSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( _, class )
+        if badClasses[class] then return false end
+    end )
+
+    hook.Add( "PlayerGiveSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( _, class )
         if badClasses[class] then return false end
     end )
 end
@@ -41,4 +46,11 @@ do
     hook.Add( "PreRegisterSENT", "CFC_EntityStubber_DisableM9kSENTs", function( _, class )
         if badClasses[class] then return false end
     end )
+
+    hook.Add( "PlayerSpawnSENT", "CFC_EntityStubber_DisableM9kSENTs", function( _, class )
+        if badClasses[class] then return false end
+    end )
 end
+
+AddCSLuaFile( "cfc_entity_stubber/main_loader.lua" )
+include( "cfc_entity_stubber/main_loader.lua" )
