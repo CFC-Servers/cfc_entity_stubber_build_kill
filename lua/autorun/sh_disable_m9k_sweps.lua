@@ -1,4 +1,4 @@
--- Disable bad sweps
+
 do
     local badClasses = {
         m9k_davy_crockett = true,
@@ -14,14 +14,6 @@ do
     }
 
     hook.Add( "PreRegisterSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( _, class )
-        if badClasses[class] then return false end
-    end )
-
-    hook.Add( "PlayerSpawnSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( _, class )
-        if badClasses[class] then return false end
-    end )
-
-    hook.Add( "PlayerGiveSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( _, class )
         if badClasses[class] then return false end
     end )
 end
@@ -41,22 +33,22 @@ do
         m9k_poison_parent = true,
         m9k_released_poison = true,
         m9k_sent_nuke_radiation = true,
-    }
 
-    local function isAmmo( class )
-        return string.StartsWith( class, "m9k_ammo" )
-    end
+        -- Ammo
+        m9k_ammo_40mm = true,
+        m9k_ammo_c4 = true,
+        m9k_ammo_frags = true,
+        m9k_ammo_ieds = true,
+        m9k_ammo_nervegas = true,
+        m9k_ammo_nuke = true,
+        m9k_ammo_proxmines = true,
+        m9k_ammo_rockets = true,
+        m9k_ammo_40mm_single = true,
+        m9k_ammo_stickynades = true,
+        m9k_ammo_orbitalstrike = true,
+    }
 
     hook.Add( "PreRegisterSENT", "CFC_EntityStubber_DisableM9kSENTs", function( _, class )
         if badClasses[class] then return false end
-        if isAmmo( class ) then return false end
-    end )
-
-    hook.Add( "PlayerSpawnSENT", "CFC_EntityStubber_DisableM9kSENTs", function( _, class )
-        if badClasses[class] then return false end
-        if isAmmo( class ) then return false end
     end )
 end
-
-AddCSLuaFile( "cfc_entity_stubber/main_loader.lua" )
-include( "cfc_entity_stubber/main_loader.lua" )
