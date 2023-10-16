@@ -1,4 +1,4 @@
--- Disable bad sweps
+
 do
     local badClasses = {
         m9k_davy_crockett = true,
@@ -57,6 +57,3 @@ do
         if isAmmo( class ) then return false end
     end )
 end
-
-AddCSLuaFile( "cfc_entity_stubber/main_loader.lua" )
-include( "cfc_entity_stubber/main_loader.lua" )
