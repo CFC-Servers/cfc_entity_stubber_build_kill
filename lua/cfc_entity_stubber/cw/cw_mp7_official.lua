@@ -4,5 +4,6 @@ cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_mp7_official" )
     weapon.DeployTime = 0
     weapon.HolsterTime = 0
-    weapon.ReloadSpeed = 1.2
+    weapon.ReloadSpeed = 1.7
+    weapon.VelocitySensitivity = 0.5
 end )
