@@ -7,4 +7,5 @@ cfcEntityStubber.registerStub( function()
     weapon.Damage = 25
     weapon.ReloadSpeed = 1.3
     weapon.SpreadPerShot = 0.005
+    weapon.SprintingEnabled = false
 end )
