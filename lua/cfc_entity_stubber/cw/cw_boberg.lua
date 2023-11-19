@@ -6,4 +6,5 @@ cfcEntityStubber.registerStub( function()
     weapon.AimSpread = 0.005
     weapon.DeployTime = 0
     weapon.HolsterTime = 0
+    weapon.SprintingEnabled = false
 end )
