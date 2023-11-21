@@ -1,10 +1,9 @@
 AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
-    local weapon = cfcEntityStubber.getWeapon( "cw_mp5" )
+    local weapon = cfcEntityStubber.getWeapon( "cw_g4p_g36c" )
     weapon.DeployTime = 0
     weapon.HolsterTime = 0
-    weapon.ReloadSpeed = 1.5
     weapon.VelocitySensitivity = 0
-    weapon.Damage = 26
+    weapon.Damage = 30
 end )
