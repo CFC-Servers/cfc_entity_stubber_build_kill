@@ -11,4 +11,5 @@ cfcEntityStubber.registerStub( function()
     weapon.VelocitySensitivity = 0
     weapon.RecoilToSpread = 0
     weapon.SprintingEnabled = false
+    weapon.Recoil = 2.2
 end )
