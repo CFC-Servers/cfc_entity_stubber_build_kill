@@ -4,13 +4,13 @@ cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_g4p_g2contender" )
     weapon.Attachments = {}
     weapon.Recoil = 60
-    weapon.Shots = 18
+    weapon.Shots = 20
     weapon.AimSpread = 0.06
     weapon.HipSpread = 0.2
     weapon.SpreadPerShot = 0.01
     weapon.ClumpSpread = 0.1
-    weapon.ReloadSpeed = 0.5
-    weapon.VelocitySensitivity = 2.5
+    weapon.ReloadSpeed = 0.6
+    weapon.Damage = 20
 
     local IsValid = IsValid
 
