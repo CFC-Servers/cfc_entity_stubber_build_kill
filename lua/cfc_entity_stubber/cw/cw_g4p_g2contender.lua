@@ -27,7 +27,7 @@ cfcEntityStubber.registerStub( function()
         if IsValid( ent ) and ent:IsPlayer() then
             dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
         else
-            dmg:SetDamageForce( dmg:GetDamageForce() * 100 )
+            dmg:SetDamageForce( dmg:GetDamageForce() * 20 )
         end
     end )
 end )
