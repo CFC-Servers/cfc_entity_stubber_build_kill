@@ -19,6 +19,12 @@ cfcEntityStubber.registerStub( function()
             return false
         end
 
+        local owner = self:GetOwner()
+
+        if owner:IsNPC() or owner:IsNextBot() then
+            return true
+        end
+
         if self:GetScopeIndex() == 0 then
             self:EmitSound( "items/medshotno1.wav", 75, 100, 0.7, CHAN_STATIC )
 
