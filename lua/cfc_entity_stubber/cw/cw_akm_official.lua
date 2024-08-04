@@ -7,4 +7,5 @@ cfcEntityStubber.registerStub( function()
     weapon.HolsterTime = 0
     weapon.HipSpread = 0.02
     weapon.SpreadPerShot = 0.008
+    weapon.Recoil = 1
 end )
