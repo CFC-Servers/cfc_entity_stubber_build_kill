@@ -11,5 +11,4 @@ cfcEntityStubber.registerStub( function()
     weapon.MaxSpreadInc = 0.02
     weapon.Recoil = 1.7
     weapon.Damage = 37
-    weapon.ACF_DamageMult = 7
 end )

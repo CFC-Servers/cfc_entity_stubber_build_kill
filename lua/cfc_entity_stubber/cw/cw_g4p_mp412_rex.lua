@@ -14,7 +14,6 @@ cfcEntityStubber.registerStub( function()
     weapon.HolsterUnderwater = false
     weapon.FireDelay = 0.595
     weapon.RecoilToSpread = 0
-    weapon.ACF_DamageMult = 10
     weapon.DeployTime = 0
     weapon.HolsterTime = 0
     weapon.NoRicochet = {[MAT_FLESH] = true, [MAT_ANTLION] = false, [MAT_BLOODYFLESH] = false, [MAT_DIRT] = false, [MAT_SAND] = false, [MAT_GLASS] = false, [MAT_ALIENFLESH] = false, [MAT_GRASS] = false}
