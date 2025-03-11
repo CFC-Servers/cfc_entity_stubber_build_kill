@@ -2,5 +2,5 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "tfa_l4d2mw_sledgehammer" )
-    weapon.PropDamageMultiplier = 1.5
+    weapon.PropDamageMultiplier = 1.75
 end )
