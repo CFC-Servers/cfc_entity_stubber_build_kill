@@ -15,6 +15,7 @@ do
     hook.Add( "PreRegisterSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( swep, class )
         if badClasses[class] then
             swep.AdminOnly = true
+            swep.Spawnable = false
         end
     end )
 end
