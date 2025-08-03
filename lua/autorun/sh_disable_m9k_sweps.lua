@@ -1,4 +1,3 @@
-
 do
     local badClasses = {
         m9k_davy_crockett = true,
@@ -13,8 +12,10 @@ do
         m9k_rpg7 = true,
     }
 
-    hook.Add( "PreRegisterSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( _, class )
-        if badClasses[class] then return false end
+    hook.Add( "PreRegisterSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( swep, class )
+        if badClasses[class] then
+            swep.AdminOnly = true
+        end
     end )
 end
 
