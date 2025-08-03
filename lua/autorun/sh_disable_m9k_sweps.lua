@@ -23,19 +23,6 @@ end
 -- Disable bad sents
 do
     local badClasses = {
-        m9k_davy_crockett_explo = true,
-        m9k_gdcwa_matador_90mm = true,
-        m9k_gdcwa_rpg_heat = true,
-        m9k_launched_davycrockett = true,
-        m9k_launched_ex41 = true,
-        m9k_launched_m79 = true,
-        m9k_m202_rocket = true,
-        m9k_nervegasnade = true,
-        m9k_orbital_cannon = true,
-        m9k_poison_parent = true,
-        m9k_released_poison = true,
-        m9k_sent_nuke_radiation = true,
-
         -- Ammo
         m9k_ammo_40mm = true,
         m9k_ammo_c4 = true,
