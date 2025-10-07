@@ -4,7 +4,7 @@ AddCSLuaFile()
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "m9k_nitro" )
 
-    weapon.Primary.RPM = 20 -- 30
+    weapon.Primary.RPM = 20 -- 100
 end )
 
 -- https://github.com/CFC-Servers/m9k_monorepo/blob/main/lua/entities/m9k_nitro_vapor.lua
