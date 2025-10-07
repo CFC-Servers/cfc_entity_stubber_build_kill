@@ -4,7 +4,7 @@ AddCSLuaFile()
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "m9k_nitro" )
 
-    weapon.Primary.RPM = 20 -- 100
+    weapon.Primary.RPM = 17 -- 100
 
     -- Need to override some functions to make the nitro actually care about its RPM.
 
