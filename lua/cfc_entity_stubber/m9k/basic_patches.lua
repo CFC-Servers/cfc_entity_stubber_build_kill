@@ -30,6 +30,7 @@ applyBasicPatch( "m9k_acr", { Damage = 25, SpreadHip = 0.05, SpreadIronSights = 
 applyBasicPatch( "m9k_ak47", { Damage = 25, RPM = 600, SpreadHip = 0.04, SpreadIronSights = 0.02, KickUp = 0.3, KickHorizontal = 0.3, } )
 applyBasicPatch( "m9k_ak74", { Damage = 30, RPM = 500, SpreadHip = 0.01, SpreadIronSights = 0.005, KickUp = 1, KickHorizontal = 0.5, } )
 applyBasicPatch( "m9k_amd65", { Damage = 30, SpreadHip = 0.025, SpreadIronSights = 0.015, } )
+applyBasicPatch( "m9k_an94", { Damage = 20, }, { SelectiveFire = false, } )
 applyBasicPatch( "m9k_val", { Damage = 25, } )
 applyBasicPatch( "m9k_f2000", { Damage = 15, RPM = 550, SpreadHip = 0.015, SpreadIronSights = 0.01, KickUp = 0.2, KickDown = 0.2, KickHorizontal = 0.2, } )
 applyBasicPatch( "m9k_famas", { Damage = 25, KickUp = 2.5, KickDown = 2.5, } )
