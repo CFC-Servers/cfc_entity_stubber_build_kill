@@ -78,10 +78,13 @@ applyBasicPatch( "m9k_barret_m82", { Damage = 90, RPM = 60, }, { Instructions = 
 applyBasicPatch( "m9k_svu", { SpreadHip = 0.2, }, { Instructions = "You might want to scope in.", } )
 applyBasicPatch( "m9k_sl8", { Damage = 30, ClipSize = 20, } )
 applyBasicPatch( "m9k_dragunov", { Damage = 50, }, { Instructions = "Low damage, fast fire rate.\nGood for hip firing.", } )
+applyBasicPatch( "m9k_psg1", { SpreadHip = 0.05, }, { Instructions = "You might want to scope in.", } )
 applyBasicPatch( "m9k_svt40", { Damage = 40, SpreadHip = 0.005, }, { Instructions = "Low damage, fast fire rate.\nGood for hip firing.", } )
 
 -- Submachine Guns
 applyBasicPatch( "m9k_bizonp19", { Damage = 20, ClipSize = 40, } )
+applyBasicPatch( "m9k_smgp90", { Damage = 15, KickUp = 0.8, } )
+applyBasicPatch( "m9k_mp5", { Damage = 18, SpreadHip = 0.04, SpreadIronSights = 0.03, } )
 applyBasicPatch( "m9k_mp7", { Damage = 20, } )
 applyBasicPatch( "m9k_vector", { SpreadHip = 0.035, SpreadIronSights = 0.017, } )
 applyBasicPatch( "m9k_magpulpdr", { Damage = 20, } )
