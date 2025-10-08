@@ -44,7 +44,7 @@ applyBasicPatch( "m9k_m16a4_acog", { Damage = 15, KickUp = 0.2, KickDown = 0.2, 
 applyBasicPatch( "m9k_m4a1", { SpreadHip = 0.05, SpreadIronSights = 0.025, } )
 applyBasicPatch( "m9k_scar", { Damage = 15, } )
 applyBasicPatch( "m9k_vikhr", { Damage = 10, RPM = 1200, } )
-applyBasicPatch( "m9k_auga3", { Damage = 20, KickDown = -2, } )
+applyBasicPatch( "m9k_auga3", { Damage = 20, KickUp = -0.5, KickDown = -2, } ) -- Downwards recoil!
 applyBasicPatch( "m9k_tar21", { Damage = 20, SpreadHip = 0.03, SpreadIronSights = 0.02, } )
 
 -- Machine Guns
