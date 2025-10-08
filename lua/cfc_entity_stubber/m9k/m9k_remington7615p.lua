@@ -13,11 +13,10 @@ cfcEntityStubber.registerStub( function()
     weapon.Primary.KnockbackMult = 15
 
     local base = baseclass.Get( weapon.Base )
-    local oldBulletCallback = base.BulletCallback
 
     function weapon:BulletCallback( iteration, attacker, bulletTrace, dmginfo, direction )
         dmginfo:SetDamageForce( dmginfo:GetDamageForce() * self.Primary.KnockbackMult )
 
-        return oldBulletCallback( self, iteration, attacker, bulletTrace, dmginfo, direction )
+        return base.BulletCallback( self, iteration, attacker, bulletTrace, dmginfo, direction )
     end
 end )
