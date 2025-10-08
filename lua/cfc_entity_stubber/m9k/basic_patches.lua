@@ -53,7 +53,7 @@ applyBasicPatch( "m9k_pkm", { Damage = 20, } )
 applyBasicPatch( "m9k_fg42", { Damage = 20, } )
 
 -- Pistols
-applyBasicPatch( "m9k_glock", { Damage = 15, ClipSize = 20, } )
+applyBasicPatch( "m9k_glock", { Damage = 10, ClipSize = 20, } )
 
 -- Shotguns
 applyBasicPatch( "m9k_m3", { NumShots = 8, } )
