@@ -75,10 +75,10 @@ applyBasicPatch( "m9k_1887winchester", { SpreadHip = 0.05, SpreadIronSights = 0.
 
 -- Sniper Rifles
 applyBasicPatch( "m9k_barret_m82", { Damage = 90, RPM = 60, }, { Instructions = "No, you can't spam it anymore.\nScope in like a real sniper.", } )
-applyBasicPatch( "m9k_svu", { SpreadHip = 0.2, }, { Instructions = "You might want to scope in.", } )
+applyBasicPatch( "m9k_svu", { SpreadHip = 0.1, }, { Instructions = "You might want to scope in.", } )
 applyBasicPatch( "m9k_sl8", { Damage = 30, ClipSize = 20, } )
 applyBasicPatch( "m9k_dragunov", { Damage = 50, }, { Instructions = "Low damage, fast fire rate.\nGood for hip firing.", } )
-applyBasicPatch( "m9k_psg1", { SpreadHip = 0.05, }, { Instructions = "You might want to scope in.", } )
+applyBasicPatch( "m9k_psg1", { SpreadHip = 0.1, }, { Instructions = "You might want to scope in.", } )
 applyBasicPatch( "m9k_svt40", { Damage = 40, SpreadHip = 0.005, }, { Instructions = "Low damage, fast fire rate.\nGood for hip firing.", } )
 
 -- Submachine Guns
