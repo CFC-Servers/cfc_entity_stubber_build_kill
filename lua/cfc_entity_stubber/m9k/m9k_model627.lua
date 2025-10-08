@@ -6,6 +6,8 @@ cfcEntityStubber.registerStub( function()
 
     -- Damage starts off low and increases as the clip empties.
 
+    weapon.Instructions = "Gets stronger as the clip empties."
+
     weapon.Primary.DamageByClip = { 10, 10, 15, 25, 30, 60 }
 
     function weapon:ShootBulletInformation()

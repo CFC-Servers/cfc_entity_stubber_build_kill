@@ -6,6 +6,8 @@ cfcEntityStubber.registerStub( function()
 
     -- Gambler's revolver. Low damage most of the time, small chance for a bunch of damage.
 
+    weapon.Instructions = "The Gambler's Revolver."
+
     weapon.Primary.SpreadHip = 0
     weapon.Primary.SpreadIronSights = 0
 
