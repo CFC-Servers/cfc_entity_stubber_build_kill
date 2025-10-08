@@ -53,7 +53,15 @@ applyBasicPatch( "m9k_pkm", { Damage = 20, } )
 applyBasicPatch( "m9k_fg42", { Damage = 20, } )
 
 -- Pistols
+applyBasicPatch( "m9k_colt1911", { Damage = 18, RPM = 400, SpreadHip = 0.02, } )
+applyBasicPatch( "m9k_coltpython", { Damage = 66, SpreadHip = 0.005, SpreadIronSights = 0.001, } ) -- Diet .357, barely able to 1-shot headshot with 25 armor at min dice.
+applyBasicPatch( "m9k_deagle", { Damage = 32, RPM = 200, SpreadHip = 0.005, SpreadIronSights = 0.001, } ) -- Weaker but faster .357 (still not perfect accuracy).
 applyBasicPatch( "m9k_glock", { Damage = 10, ClipSize = 20, } )
+applyBasicPatch( "m9k_usp", { SpreadHip = 0.015, } )
+applyBasicPatch( "m9k_hk45", { ClipSize = 24, SpreadHip = 0.05, SpreadIronSights = 0.03, KickUp = 0, KickDown = 0, KickHorizontal = 0, } ) -- Gambler's pistol. Probably awful, but peak silly.
+applyBasicPatch( "m9k_m92beretta", { Damage = 18, } )
+applyBasicPatch( "m9k_ragingbull", { Damage = 22, NumShots = 3, SpreadHip = 0.04, SpreadIronSights = 0.03, KickUp = 1, } )
+applyBasicPatch( "m9k_scoped_taurus", { Damage = 22, NumShots = 3, SpreadHip = 0.05, SpreadIronSights = 0.02, KickUp = 1, } )
 
 -- Shotguns
 applyBasicPatch( "m9k_m3", { NumShots = 8, } )
