@@ -83,7 +83,7 @@ applyBasicPatch( "m9k_svt40", { Damage = 40, SpreadHip = 0.005, }, { Instruction
 -- Submachine Guns
 applyBasicPatch( "m9k_bizonp19", { Damage = 20, ClipSize = 40, } )
 applyBasicPatch( "m9k_mp7", { Damage = 20, } )
-applyBasicPatch( "m9k_vector", { SpreadHip = 0.035, SpreadIronSights = 0.17, } )
+applyBasicPatch( "m9k_vector", { SpreadHip = 0.035, SpreadIronSights = 0.017, } )
 applyBasicPatch( "m9k_magpulpdr", { Damage = 20, } )
 applyBasicPatch( "m9k_mp40", { Damage = 20 } )
 applyBasicPatch( "m9k_mp5sd", { Damage = 15, ClipSize = 40, SpreadHip = 0.02, } )
