@@ -59,9 +59,11 @@ applyBasicPatch( "m9k_deagle", { Damage = 32, RPM = 200, SpreadHip = 0.005, Spre
 applyBasicPatch( "m9k_glock", { Damage = 10, ClipSize = 20, } )
 applyBasicPatch( "m9k_usp", { SpreadHip = 0.015, } )
 applyBasicPatch( "m9k_hk45", { ClipSize = 24, SpreadHip = 0.05, SpreadIronSights = 0.03, KickUp = 0, KickDown = 0, KickHorizontal = 0, }, { Instructions = "The Gambler's Pistol.", } ) -- Gambler's pistol. Probably awful, but peak silly.
+applyBasicPatch( "m9k_m29satan", { Damage = 66, RPM = 115, SpreadHip = 0.006, SpreadIronSights = 0.0006, } )
 applyBasicPatch( "m9k_m92beretta", { Damage = 18, } )
 applyBasicPatch( "m9k_ragingbull", { Damage = 22, NumShots = 3, SpreadHip = 0.04, SpreadIronSights = 0.03, KickUp = 1, }, { Instructions = "Shotgun Pistol. 'nuff said.", } )
 applyBasicPatch( "m9k_scoped_taurus", { Damage = 22, NumShots = 3, SpreadHip = 0.05, SpreadIronSights = 0.02, KickUp = 1, }, { Instructions = "I don't think a scope is going to help...", } )
+applyBasicPatch( "m9k_model627", { Damage = 32, RPM = 200, SpreadHip = 0.005, SpreadIronSights = 0.001, } )
 
 -- Shotguns
 applyBasicPatch( "m9k_m3", { NumShots = 8, } )
@@ -78,6 +80,7 @@ applyBasicPatch( "m9k_barret_m82", { Damage = 90, RPM = 60, }, { Instructions = 
 applyBasicPatch( "m9k_svu", { SpreadHip = 0.1, }, { Instructions = "You might want to scope in.", } )
 applyBasicPatch( "m9k_sl8", { Damage = 30, ClipSize = 20, } )
 applyBasicPatch( "m9k_psg1", { SpreadHip = 0.1, }, { Instructions = "You might want to scope in.", } )
+applyBasicPatch( "m9k_remington7615p", { Damage = 90, } )
 applyBasicPatch( "m9k_dragunov", { Damage = 50, }, { Instructions = "Low damage, fast fire rate.\nGood for hip firing.", } )
 applyBasicPatch( "m9k_svt40", { Damage = 40, SpreadHip = 0.005, }, { Instructions = "Low damage, fast fire rate.\nGood for hip firing.", } )
 
