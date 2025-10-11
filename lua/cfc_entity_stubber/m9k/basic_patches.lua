@@ -49,11 +49,11 @@ applyBasicPatch( "m9k_tar21", { Damage = 20, SpreadHip = 0.03, SpreadIronSights 
 
 -- Machine Guns
 applyBasicPatch( "m9k_ares_shrike", { Damage = 20, } )
+applyBasicPatch( "m9k_fg42", { Damage = 20, } )
 applyBasicPatch( "m9k_m1918bar", { Damage = 25, ClipSize = 20, } )
 applyBasicPatch( "m9k_m249lmg", { Damage = 20, ClipSize = 100, } )
-applyBasicPatch( "m9k_pkm", { Damage = 20, } )
-applyBasicPatch( "m9k_fg42", { Damage = 20, } )
 applyBasicPatch( "m9k_m60", { Damage = 25, } )
+applyBasicPatch( "m9k_pkm", { Damage = 20, } )
 
 -- Pistols
 applyBasicPatch( "m9k_colt1911", { Damage = 20, RPM = 400, SpreadHip = 0.02, } )
