@@ -73,13 +73,13 @@ applyBasicPatch( "m9k_model627", { Damage = 32, RPM = 200, SpreadHip = 0.005, Sp
 
 -- Shotguns
 applyBasicPatch( "m9k_m3", { NumShots = 8, } )
-applyBasicPatch( "m9k_browningauto5", { Damage = 6, NumShots = 8, RPM = 200, } )
+applyBasicPatch( "m9k_browningauto5", { Damage = 7, NumShots = 8, RPM = 200, } )
 --applyBasicPatch( "m9k_mossberg590", { Damage = 11, ClipSize = 4, SpreadHip = 0.04, SpreadIronSights = 0.04, KickUp = 3, KickHorizontal = 1.5, } ) -- Leaving this here in case the version below is too silly.
 applyBasicPatch( "m9k_mossberg590", { Damage = 3, NumShots = 80, ClipSize = 4, SpreadHip = 0.1, SpreadIronSights = 0.1, KickUp = 3, KickHorizontal = 1.5, }, { Instructions = "You'll always hit something, that's for sure.", BulletPenetrate = function() return false end, BulletRicochet = function() return false end, } )
 applyBasicPatch( "m9k_jackhammer", { Damage = 7, } )
-applyBasicPatch( "m9k_spas12", { Damage = 2, NumShots = 15, } )
+applyBasicPatch( "m9k_spas12", { Damage = 6, NumShots = 10, } )
 applyBasicPatch( "m9k_striker12", { KickUp = 10, KickDown = 10, }, { Instructions = "The Stargazer.", } ) -- THE STARGAZER RETURNS
-applyBasicPatch( "m9k_usas", { ClipSize = 5, }, { Instructions = "Reloads quick! But...", } )
+applyBasicPatch( "m9k_usas", { ClipSize = 8, }, { Instructions = "Reloads quick! But...", } )
 applyBasicPatch( "m9k_1897winchester", { SpreadHip = 0.04, SpreadIronSights = 0.04, } )
 applyBasicPatch( "m9k_1887winchester", { SpreadHip = 0.04, SpreadIronSights = 0.04, } )
 
