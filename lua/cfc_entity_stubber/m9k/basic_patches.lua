@@ -104,5 +104,5 @@ applyBasicPatch( "m9k_magpulpdr", { Damage = 20, } )
 applyBasicPatch( "m9k_mp40", { Damage = 18 } )
 applyBasicPatch( "m9k_mp5sd", { Damage = 15, ClipSize = 40, SpreadHip = 0.02, } )
 applyBasicPatch( "m9k_mp9", { ClipSize = 20, } )
-applyBasicPatch( "m9k_tec9", { ClipSize = 40, RPM = 2000, SpreadHip = 0.02, KickUp = 1, KickHorizontal = 0.5, }, { Instructions = "Fast, but at what cost?", } )
+applyBasicPatch( "m9k_tec9", { ClipSize = 40, RPM = 2000, SpreadHip = 0.02, SpreadIronSights = 0.075, KickUp = 1, KickHorizontal = 0.5, }, { Instructions = "Fast, but at what cost?", } ) -- High ironsight spread since ADS reduces recoil
 applyBasicPatch( "m9k_thompson", { KickUp = 0.8, KickDown = 0.6, KickHorizontal = 0.6, } )
