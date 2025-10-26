@@ -70,6 +70,7 @@ applyBasicPatch( "m9k_remington1858", { SpreadHip = 0.02, } )
 applyBasicPatch( "m9k_model3russian", { Damage = 35, } )
 applyBasicPatch( "m9k_model500", { Damage = 45, SpreadHip = 0.01, SpreadIronSights = 0.0075, } )
 applyBasicPatch( "m9k_model627", { Damage = 32, RPM = 200, SpreadHip = 0.005, SpreadIronSights = 0.001, KickUp = 1, KickDown = 0.5, KickHorizontal = 0.5, } )
+applyBasicPatch( "m9k_sig_p229r", { SpreadHip = 0.01, SpreadIronSights = 0.0075,  } )
 
 -- Shotguns
 applyBasicPatch( "m9k_m3", { NumShots = 8, } )
