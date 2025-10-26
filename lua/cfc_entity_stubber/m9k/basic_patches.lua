@@ -44,7 +44,7 @@ applyBasicPatch( "m9k_m16a4_acog", { Damage = 15, RPM = 400, KickUp = 0.2, KickD
 applyBasicPatch( "m9k_m4a1", { SpreadHip = 0.06, SpreadIronSights = 0.05, }, { Instructions = "Best brought to knife fights.", } )
 applyBasicPatch( "m9k_scar", { Damage = 15, } )
 applyBasicPatch( "m9k_vikhr", { Damage = 12, RPM = 1200, }, { Instructions = "Fast!", } )
-applyBasicPatch( "m9k_auga3", { Damage = 20, KickUp = -0.5, KickDown = -2, }, { Instructions = "Must be a manufacturing error.", } ) -- Downwards recoil!
+applyBasicPatch( "m9k_auga3", { Damage = 20, SpreadHip = 0.02, SpreadIronSights = 0.0175, KickUp = -0.75, KickDown = -1.5, }, { Instructions = "Must be a manufacturing error.", } ) -- Downwards recoil!
 applyBasicPatch( "m9k_tar21", { Damage = 20, SpreadHip = 0.03, SpreadIronSights = 0.02, } )
 
 -- Machine Guns
