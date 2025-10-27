@@ -59,9 +59,11 @@ applyBasicPatch( "m9k_f2000",
     { Instructions = "The sniper's assault rifle.", }
 )
 applyBasicPatch( "m9k_famas",
-    -- og: { Damage = 29, RPM = 950, ClipSize = 30, SpreadHip = 0.025, SpreadIronSights = 0.015, KickUp = 0.4, KickDown = 0.4, KickHorizontal = 0.4, }
+    -- og: { Damage = 29, RPM = 950, ClipSize = 30, SpreadHip = 0.025, SpreadIronSights = 0.015, KickUp = 0.4, KickDown = 0.4, KickHorizontal = 0.4  }
     { Damage = 25, KickUp = 2, KickDown = 2, },
-    { Instructions = "Feels lighter than usual...", }
+    -- og: { KickUpMultiplier = 2, }
+    { Instructions = "Feels lighter than usual...", KickUpMultiplier = 1.5, Scoped = true, }
+    -- Scoped = true makes ADS not cut the recoil in half, without any other noticeable side effects.
 )
 applyBasicPatch( "m9k_fal",
     -- og: { Damage = 30, RPM = 750, ClipSize = 20, SpreadHip = 0.02, SpreadIronSights = 0.01, KickUp = 0.5, KickDown = 0.3, KickHorizontal = 0.5, }
@@ -306,7 +308,9 @@ applyBasicPatch( "m9k_bizonp19",
 )
 applyBasicPatch( "m9k_smgp90",
     -- og: { Damage = 18, RPM = 900, ClipSize = 50, SpreadHip = 0.032, SpreadIronSights = 0.02, KickUp = 0.6, KickDown = 0.4, KickHorizontal = 0.5, }
-    { Damage = 15, KickUp = 0.8, }
+    { Damage = 15, KickUp = 0.8, },
+    { Scoped = true, }
+    -- Scoped = true makes ADS not cut the recoil in half, without any other noticeable side effects.
 )
 applyBasicPatch( "m9k_mp5",
     -- og: { Damage = 22, RPM = 800, ClipSize = 30, SpreadHip = 0.023, SpreadIronSights = 0.013, KickUp = 0.1, KickDown = 0.1, KickHorizontal = 0.2, }
@@ -340,7 +344,7 @@ applyBasicPatch( "m9k_tec9",
     -- og: { Damage = 17, RPM = 825, ClipSize = 32, SpreadHip = 0.029, SpreadIronSights = 0.019, KickUp = 0.2, KickDown = 0.3, KickHorizontal = 0.1, }
     { RPM = 2000, ClipSize = 40, SpreadHip = 0.02, SpreadIronSights = 0.075, KickUp = 1, KickHorizontal = 0.5, },
     { Instructions = "Fast, but at what cost?", }
-    -- High ironsight spread since ADS reduces recoil
+    -- High ironsight spread since ADS reduces recoil (mini-tradeoff between recoil and spread at the player's discretion)
 )
 applyBasicPatch( "m9k_thompson",
     -- og: { Damage = 22, RPM = 575, ClipSize = 75, SpreadHip = 0.03, SpreadIronSights = 0.019, KickUp = 0.7, KickDown = 0.6, KickHorizontal = 0.65, }
