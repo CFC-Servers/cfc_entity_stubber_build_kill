@@ -41,7 +41,7 @@ applyBasicPatch( "m9k_g3a3", { Damage = 35, ClipSize = 15, RPM = 275, SpreadHip 
 applyBasicPatch( "m9k_l85", { Damage = 13, RPM = 675, SpreadHip = 0.015, SpreadIronSights = 0.0075, KickUp = 0.2, KickDown = 0.2, KickHorizontal = 0.2, }, { Instructions = "The sniper's assault rifle.", } )
 applyBasicPatch( "m9k_m14sp", { ClipSize = 15, KickUp = 2, KickDown = 2, KickHorizontal = 2, }, { SelectiveFire = false, Instructions = "You might want to slow down your taps...", } )
 applyBasicPatch( "m9k_m16a4_acog", { Damage = 15, RPM = 400, KickUp = 0.2, KickDown = 0.2, KickHorizontal = 0.2, }, { SelectiveFire = false, Instructions = "The sniper's tapper.", } )
-applyBasicPatch( "m9k_m4a1", { SpreadHip = 0.06, SpreadIronSights = 0.05, }, { Instructions = "Best brought to knife fights.", } )
+applyBasicPatch( "m9k_m4a1", { SpreadHip = 0.08, SpreadIronSights = 0.07, }, { Instructions = "Best brought to knife fights.", } )
 applyBasicPatch( "m9k_scar", { Damage = 15, } )
 applyBasicPatch( "m9k_vikhr", { Damage = 12, RPM = 1200, }, { Instructions = "Fast!", } )
 applyBasicPatch( "m9k_auga3", { Damage = 20, SpreadHip = 0.02, SpreadIronSights = 0.0175, KickUp = -0.75, KickDown = -1.5, }, { Instructions = "Must be a manufacturing error.", } ) -- Downwards recoil!
