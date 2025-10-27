@@ -315,7 +315,8 @@ applyBasicPatch( "m9k_smgp90",
 )
 applyBasicPatch( "m9k_mp5",
     -- og: { Damage = 22, RPM = 800, ClipSize = 30, SpreadHip = 0.023, SpreadIronSights = 0.013, KickUp = 0.1, KickDown = 0.1, KickHorizontal = 0.2, }
-    { Damage = 18, SpreadHip = 0.04, SpreadIronSights = 0.03, }
+    { Damage = 18, SpreadHip = 0.04, SpreadIronSights = 0.03, },
+    { Instructions = "Very low recoil.", }
 )
 applyBasicPatch( "m9k_mp7",
     -- og: { Damage = 24, RPM = 950, ClipSize = 30, SpreadHip = 0.023, SpreadIronSights = 0.014, KickUp = 0.5, KickDown = 0.4, KickHorizontal = 0.4, }
@@ -323,7 +324,8 @@ applyBasicPatch( "m9k_mp7",
 )
 applyBasicPatch( "m9k_vector",
     -- og: { Damage = 18, RPM = 1000, ClipSize = 30, SpreadHip = 0.026, SpreadIronSights = 0.014, KickUp = 0.2, KickDown = 0.1, KickHorizontal = 0.3, }
-    { Damage = 15, SpreadHip = 0.035, SpreadIronSights = 0.017, }
+    { Damage = 15, SpreadHip = 0.035, SpreadIronSights = 0.017, },
+    { Instructions = "The scope is a must.", }
 )
 applyBasicPatch( "m9k_magpulpdr",
     -- og: { Damage = 30, RPM = 575, ClipSize = 30, SpreadHip = 0.03, SpreadIronSights = 0.02, KickUp = 0.3, KickDown = 0.3, KickHorizontal = 0.3, }
