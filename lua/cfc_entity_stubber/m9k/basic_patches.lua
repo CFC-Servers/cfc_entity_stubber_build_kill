@@ -131,11 +131,11 @@ applyBasicPatch( "m9k_ares_shrike",
 )
 applyBasicPatch( "m9k_fg42",
     -- og: { Damage = 33, RPM = 900, ClipSize = 20, SpreadHip = 0.035, SpreadIronSights = 0.01, KickUp = 0.5, KickDown = 0.3, KickHorizontal = 0.4, }
-    { Damage = 20, }
+    { Damage = 16, ClipSize = 30, SpreadHip = 0.035, SpreadIronSights = 0.02, }
 )
 applyBasicPatch( "m9k_m1918bar",
     -- og: { Damage = 40, RPM = 450, ClipSize = 20, SpreadHip = 0.025, SpreadIronSights = 0.015, KickUp = 0.6, KickDown = 0.4, KickHorizontal = 0.5, }
-    { Damage = 25, ClipSize = 20, }
+    { Damage = 25, RPM = 400, ClipSize = 20, SpreadHip = 0.025, SpreadIronSights = 0.02, }
 )
 applyBasicPatch( "m9k_m249lmg",
     -- og: { Damage = 27, RPM = 855, ClipSize = 150, SpreadHip = 0.035, SpreadIronSights = 0.024, KickUp = 0.6, KickDown = 0.4, KickHorizontal = 0.5, }
@@ -163,7 +163,7 @@ applyBasicPatch( "m9k_coltpython",
 )
 applyBasicPatch( "m9k_deagle",
     -- og: { Damage = 30, RPM = 600, ClipSize = 7, SpreadHip = 0.025, SpreadIronSights = 0.015, KickUp = 1, KickDown = 0.5, KickHorizontal = 0.5, }
-    { Damage = 32, RPM = 200, SpreadHip = 0.005, SpreadIronSights = 0.001, },
+    { Damage = 33, RPM = 250, SpreadHip = 0.005, SpreadIronSights = 0.001, },
     { Instructions = "Weaker than the Python, but faster too.", }
 )
 applyBasicPatch( "m9k_glock",
@@ -246,7 +246,8 @@ applyBasicPatch( "m9k_spas12",
 applyBasicPatch( "m9k_striker12",
     -- og: { Damage = 8, NumShots = 6, RPM = 365, ClipSize = 12, SpreadHip = 0.04, SpreadIronSights = 0.04, KickUp = 4, KickDown = 0.5, KickHorizontal = 0.6, }
     { KickUp = 10, KickDown = 10, },
-    { Instructions = "The Stargazer.", }
+    -- og: { KickUpMultiplier = 2, }
+    { KickUpMultiplier = 1.25, Scoped = true, Instructions = "The Stargazer.", }
 )
 applyBasicPatch( "m9k_usas",
     -- og: { Damage = 7, NumShots = 10, RPM = 260, ClipSize = 20, SpreadHip = 0.048, SpreadIronSights = 0.048, KickUp = 1, KickDown = 0.4, KickHorizontal = 0.7, }
@@ -255,11 +256,11 @@ applyBasicPatch( "m9k_usas",
 )
 applyBasicPatch( "m9k_1897winchester",
     -- og: { Damage = 10, NumShots = 11, RPM = 70, ClipSize = 4, SpreadHip = 0.04, SpreadIronSights = 0.04, KickUp = 0.9, KickDown = 0.6, KickHorizontal = 0.4, }
-    { SpreadHip = 0.04, SpreadIronSights = 0.04, }
+    { Damage = 10, NumShots = 11, SpreadHip = 0.04, SpreadIronSights = 0.04, }
 )
 applyBasicPatch( "m9k_1887winchester",
     -- og: { Damage = 10, NumShots = 10, RPM = 70, ClipSize = 4, SpreadHip = 0.042, SpreadIronSights = 0.042, KickUp = 1, KickDown = 0.8, KickHorizontal = 0.6, }
-    { SpreadHip = 0.04, SpreadIronSights = 0.04, }
+    { Damage = 10, NumShots = 11, SpreadHip = 0.04, SpreadIronSights = 0.04, }
 )
 
 ----- Sniper Rifles -----
@@ -275,7 +276,7 @@ applyBasicPatch( "m9k_svu",
 )
 applyBasicPatch( "m9k_sl8",
     -- og: { Damage = 60, RPM = 300, ClipSize = 30, SpreadHip = 0.015, SpreadIronSights = 0.001, KickUp = 0.6, KickDown = 0.6, KickHorizontal = 0.6, }
-    { Damage = 30, ClipSize = 20, }
+    { Damage = 25, ClipSize = 20, }
 )
 applyBasicPatch( "m9k_psg1",
     -- og: { Damage = 90, RPM = 500, ClipSize = 10, SpreadHip = 0.01, SpreadIronSights = 0.0001, KickUp = 1, KickDown = 1, KickHorizontal = 1, }
@@ -288,19 +289,19 @@ applyBasicPatch( "m9k_remington7615p",
 )
 applyBasicPatch( "m9k_dragunov",
     -- og: { Damage = 90, RPM = 400, ClipSize = 10, SpreadHip = 0.01, SpreadIronSights = 0.00012, KickUp = 1, KickDown = 0.6, KickHorizontal = 0.5, }
-    { Damage = 50, },
+    { Damage = 40, RPM = 400, },
     { Instructions = "Low damage, fast fire rate.\nGood for hip firing.", }
 )
 applyBasicPatch( "m9k_svt40",
     -- og: { Damage = 80, RPM = 350, ClipSize = 10, SpreadHip = 0.01, SpreadIronSights = 0.0001, KickUp = 1, KickDown = 1, KickHorizontal = 1, }
-    { Damage = 40, SpreadHip = 0.005, },
-    { Instructions = "Low damage, fast fire rate.\nGood for hip firing.", }
+    { Damage = 40, RPM = 300, ClipSize = 12, SpreadHip = 0.005, },
+    { Instructions = "Low damage, fast fire rate.\nGood for hip firing.\nSlightly slower than the SVD Dragonuv, but more accurate.", }
 )
 
 ----- Submachine Guns -----
 applyBasicPatch( "m9k_honeybadger",
     -- og: { Damage = 24, RPM = 791, ClipSize = 30, SpreadHip = 0.023, SpreadIronSights = 0.014, KickUp = 0.5, KickDown = 0.3, KickHorizontal = 0.5, }
-    { Damage = 22, }
+    { Damage = 20, SpreadHip = 0.02, SpreadIronSights = 0.015, }
 )
 applyBasicPatch( "m9k_bizonp19",
     -- og: { Damage = 19, RPM = 675, ClipSize = 64, SpreadHip = 0.02, SpreadIronSights = 0.015, KickUp = 0.6, KickDown = 0.4, KickHorizontal = 0.5, }
@@ -318,7 +319,7 @@ applyBasicPatch( "m9k_mp5",
 )
 applyBasicPatch( "m9k_mp7",
     -- og: { Damage = 24, RPM = 950, ClipSize = 30, SpreadHip = 0.023, SpreadIronSights = 0.014, KickUp = 0.5, KickDown = 0.4, KickHorizontal = 0.4, }
-    { Damage = 20, }
+    { Damage = 16, KickUp = 0.4, KickDown = 0.4, KickHorizontal = 0.3, }
 )
 applyBasicPatch( "m9k_vector",
     -- og: { Damage = 18, RPM = 1000, ClipSize = 30, SpreadHip = 0.026, SpreadIronSights = 0.014, KickUp = 0.2, KickDown = 0.1, KickHorizontal = 0.3, }
@@ -338,7 +339,7 @@ applyBasicPatch( "m9k_mp5sd",
 )
 applyBasicPatch( "m9k_mp9",
     -- og: { Damage = 20, RPM = 900, ClipSize = 30, SpreadHip = 0.023, SpreadIronSights = 0.014, KickUp = 0.2, KickDown = 0.1, KickHorizontal = 0.2, }
-    { ClipSize = 20, }
+    { Damage = 18, ClipSize = 20, }
 )
 applyBasicPatch( "m9k_tec9",
     -- og: { Damage = 17, RPM = 825, ClipSize = 32, SpreadHip = 0.029, SpreadIronSights = 0.019, KickUp = 0.2, KickDown = 0.3, KickHorizontal = 0.1, }
@@ -348,5 +349,5 @@ applyBasicPatch( "m9k_tec9",
 )
 applyBasicPatch( "m9k_thompson",
     -- og: { Damage = 22, RPM = 575, ClipSize = 75, SpreadHip = 0.03, SpreadIronSights = 0.019, KickUp = 0.7, KickDown = 0.6, KickHorizontal = 0.65, }
-    { KickUp = 0.8, KickDown = 0.6, KickHorizontal = 0.6, }
+    { SpreadHip = 0.03, SpreadIronSights = 0.025, KickUp = 0.8, KickDown = 0.6, KickHorizontal = 0.8, }
 )
