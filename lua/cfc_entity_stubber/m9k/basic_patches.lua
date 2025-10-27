@@ -196,8 +196,8 @@ applyBasicPatch( "m9k_ragingbull",
 )
 applyBasicPatch( "m9k_scoped_taurus",
     -- og: { Damage = 31, NumShots = 1, RPM = 115, ClipSize = 6, SpreadHip = 0.02, SpreadIronSights = 0.0001, KickUp = 10, KickDown = 0.5, KickHorizontal = 1, }
-    { Damage = 22, NumShots = 3, SpreadHip = 0.05, SpreadIronSights = 0.02, KickUp = 1, },
-    { Instructions = "I don't think a scope is going to help...", }
+    { Damage = 33, SpreadHip = 0.02, SpreadIronSights = 0.0001, KickUp = 1, KickDown = 0.5, KickHorizontal = 1, },
+    { Instructions = "For puritans who don't want buckshot in their pistols.\nAlso has a scope, I'm sure that's normal.", }
 )
 applyBasicPatch( "m9k_remington1858",
     -- og: { Damage = 34, RPM = 150, ClipSize = 6, SpreadHip = 0.025, SpreadIronSights = 0.012, KickUp = 0.9, KickDown = 0.5, KickHorizontal = 0.4, }
