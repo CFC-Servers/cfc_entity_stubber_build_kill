@@ -46,7 +46,7 @@ applyBasicPatch( "m9k_amd65",
 )
 applyBasicPatch( "m9k_an94",
     -- og: { Damage = 31, RPM = 600, ClipSize = 30, SpreadHip = 0.015, SpreadIronSights = 0.005, KickUp = 0.3, KickDown = 0.1, KickHorizontal = 0.3, }
-    { Damage = 18, },
+    { Damage = 18, SpreadHip = 0.02, SpreadIronSights = 0.015, },
     { SelectiveFire = false, Instructions = "Alt fire disabled. No free x2 for you.", }
 )
 applyBasicPatch( "m9k_val",
