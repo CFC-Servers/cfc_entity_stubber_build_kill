@@ -343,7 +343,8 @@ applyBasicPatch( "m9k_mp5sd",
 )
 applyBasicPatch( "m9k_mp9",
     -- og: { Damage = 20, RPM = 900, ClipSize = 30, SpreadHip = 0.023, SpreadIronSights = 0.014, KickUp = 0.2, KickDown = 0.1, KickHorizontal = 0.2, }
-    { Damage = 18, ClipSize = 20, }
+    { Damage = 18, ClipSize = 15, SpreadHip = 0.0175, SpreadIronSights = 0.0125, },
+    { Instructions = "High accuracy and speed, small clip.\nMake every bullet count.", }
 )
 applyBasicPatch( "m9k_tec9",
     -- og: { Damage = 17, RPM = 825, ClipSize = 32, SpreadHip = 0.029, SpreadIronSights = 0.019, KickUp = 0.2, KickDown = 0.3, KickHorizontal = 0.1, }
