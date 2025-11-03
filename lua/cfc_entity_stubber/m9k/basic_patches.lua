@@ -91,7 +91,7 @@ applyBasicPatch( "m9k_l85",
 )
 applyBasicPatch( "m9k_m14sp",
     -- og: { Damage = 32, RPM = 750, ClipSize = 20, SpreadHip = 0.01, SpreadIronSights = 0.001, KickUp = 0.6, KickDown = 0.6, KickHorizontal = 0.6, }
-    { ClipSize = 15, KickUp = 2, KickDown = 2, KickHorizontal = 2, },
+    { ClipSize = 15, SpreadHip = 0.005, SpreadIronSights = 0.001, KickUp = 2, KickDown = 2, KickHorizontal = 2, },
     { SelectiveFire = false, Instructions = "You might want to slow down your taps...", }
 )
 applyBasicPatch( "m9k_m16a4_acog",
