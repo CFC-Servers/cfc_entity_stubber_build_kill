@@ -67,7 +67,8 @@ applyBasicPatch( "m9k_famas",
 )
 applyBasicPatch( "m9k_fal",
     -- og: { Damage = 30, RPM = 750, ClipSize = 20, SpreadHip = 0.02, SpreadIronSights = 0.01, KickUp = 0.5, KickDown = 0.3, KickHorizontal = 0.5, }
-    { SpreadHip = 0.04, SpreadIronSights = 0.03, }
+    { SpreadHip = 0.04, SpreadIronSights = 0.03, },
+    { Automatic = true, Instructions = "High damage, high spread.\nNow starts in full-auto!", }
 )
 applyBasicPatch( "m9k_g36",
     -- og: { Damage = 28, RPM = 750, ClipSize = 30, SpreadHip = 0.02, SpreadIronSights = 0.01, KickUp = 0.3, KickDown = 0.3, KickHorizontal = 0.3, }
