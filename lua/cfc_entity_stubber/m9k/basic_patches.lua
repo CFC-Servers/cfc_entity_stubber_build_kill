@@ -98,7 +98,7 @@ applyBasicPatch( "m9k_m14sp",
 )
 applyBasicPatch( "m9k_m16a4_acog",
     -- og: { Damage = 30, RPM = 850, ClipSize = 30, SpreadHip = 0.015, SpreadIronSights = 0.01, KickUp = 0.4, KickDown = 0.4, KickHorizontal = 0.6, }
-    { Damage = 15, RPM = 400, KickUp = 0.2, KickDown = 0.2, KickHorizontal = 0.2, },
+    { Damage = 15, RPM = 400, SpreadHip = 0.015, SpreadIronSights = 0.005, KickUp = 0.2, KickDown = 0.2, KickHorizontal = 0.2, },
     { SelectiveFire = false, Instructions = "The sniper's tapper.", }
 )
 applyBasicPatch( "m9k_m4a1",
