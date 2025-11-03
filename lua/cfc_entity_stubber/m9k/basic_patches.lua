@@ -303,7 +303,7 @@ applyBasicPatch( "m9k_svt40",
 ----- Submachine Guns -----
 applyBasicPatch( "m9k_honeybadger",
     -- og: { Damage = 24, RPM = 791, ClipSize = 30, SpreadHip = 0.023, SpreadIronSights = 0.014, KickUp = 0.5, KickDown = 0.3, KickHorizontal = 0.5, }
-    { Damage = 20, SpreadHip = 0.02, SpreadIronSights = 0.015, }
+    { Damage = 16, SpreadHip = 0.02, SpreadIronSights = 0.015, }
 )
 applyBasicPatch( "m9k_bizonp19",
     -- og: { Damage = 19, RPM = 675, ClipSize = 64, SpreadHip = 0.02, SpreadIronSights = 0.015, KickUp = 0.6, KickDown = 0.4, KickHorizontal = 0.5, }
