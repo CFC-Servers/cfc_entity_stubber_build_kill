@@ -42,7 +42,7 @@ applyBasicPatch( "m9k_ak74",
 )
 applyBasicPatch( "m9k_amd65",
     -- og: { Damage = 31, RPM = 750, ClipSize = 20, SpreadHip = 0.021, SpreadIronSights = 0.011, KickUp = 0.7, KickDown = 0.2, KickHorizontal = 0.4, }
-    { Damage = 30, RPM = 700, SpreadHip = 0.025, SpreadIronSights = 0.015, }
+    { Damage = 18, RPM = 700, SpreadHip = 0.025, SpreadIronSights = 0.02, KickUp = 0.5, KickDown = 0.2, KickHorizontal = 0.3, }
 )
 applyBasicPatch( "m9k_an94",
     -- og: { Damage = 31, RPM = 600, ClipSize = 30, SpreadHip = 0.015, SpreadIronSights = 0.005, KickUp = 0.3, KickDown = 0.1, KickHorizontal = 0.3, }
@@ -51,7 +51,8 @@ applyBasicPatch( "m9k_an94",
 )
 applyBasicPatch( "m9k_val",
     -- og: { Damage = 27, RPM = 900, ClipSize = 20, SpreadHip = 0.019, SpreadIronSights = 0.008, KickUp = 0.3, KickDown = 0.3, KickHorizontal = 0.5, }
-    { Damage = 20, }
+    { Damage = 15, SpreadHip = 0.015, SpreadIronSights = 0.025, KickUp = 0.4, KickDown = 0.4, KickHorizontal = 0.5, },
+    { Instructions = "ADS reduces recoil but increases spread.", }
 )
 applyBasicPatch( "m9k_f2000",
     -- og: { Damage = 23, RPM = 850, ClipSize = 30, SpreadHip = 0.025, SpreadIronSights = 0.015, KickUp = 0.4, KickDown = 0.4, KickHorizontal = 0.4, }
