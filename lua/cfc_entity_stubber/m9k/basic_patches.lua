@@ -60,9 +60,9 @@ applyBasicPatch( "m9k_f2000",
 )
 applyBasicPatch( "m9k_famas",
     -- og: { Damage = 29, RPM = 950, ClipSize = 30, SpreadHip = 0.025, SpreadIronSights = 0.015, KickUp = 0.4, KickDown = 0.4, KickHorizontal = 0.4  }
-    { Damage = 25, KickUp = 2, KickDown = 2, },
+    { Damage = 25, KickUp = 2.25, KickDown = 2.25, KickHorizontal = 0.2, },
     -- og: { KickUpMultiplier = 2, }
-    { KickUpMultiplier = 1.5, Scoped = true, Instructions = "Feels lighter than usual...", }
+    { KickUpMultiplier = 1.5, Scoped = true, Instructions = "Strong, if you can handle the recoil.", }
     -- Scoped = true makes ADS not cut the recoil in half, without any other noticeable side effects.
 )
 applyBasicPatch( "m9k_fal",
