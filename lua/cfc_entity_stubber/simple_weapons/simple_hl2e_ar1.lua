@@ -7,6 +7,6 @@ cfcEntityStubber.registerStub( function()
 
     weapon.Primary.Range = 1000
 
-    weapon.Primary.Recoil.MinAng = Angle(0.6, -0.3, 0)
-    weapon.Primary.Recoil.MaxAng = Angle(0.7, 0.3, 0)
+    weapon.Primary.Recoil.MinAng = Angle( 0.6, -0.3, 0 )
+    weapon.Primary.Recoil.MaxAng = Angle( 0.7, 0.3, 0 )
 end )

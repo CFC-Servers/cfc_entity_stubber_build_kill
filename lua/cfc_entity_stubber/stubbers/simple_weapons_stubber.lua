@@ -1,2 +1,2 @@
 AddCSLuaFile()
-cfcEntityStubber.registerStubber("simple_weapons")
+cfcEntityStubber.registerStubber( "simple_weapons" )

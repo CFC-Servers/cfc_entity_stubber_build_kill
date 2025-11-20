@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 -- Since a bunch of weapons are getting very little edits I'm going to use a helper function here
-local function applyBasicPatch(class, range, accuracy)
+local function applyBasicPatch( class, range, accuracy )
     cfcEntityStubber.registerStub( function()
         local weapon = cfcEntityStubber.getWeapon( class )
 
@@ -30,7 +30,7 @@ applyBasicPatch( "simple_css_deagle", 2000, 8 )
 applyBasicPatch( "simple_css_elite", 1400 )
 applyBasicPatch( "simple_css_famas", 2000 )
 -- applyBasicPatch( "simple_css_fiveseven" )
-applyBasicPatch( "simple_css_g3sg1", 6000, 8)
+applyBasicPatch( "simple_css_g3sg1", 6000, 8 )
 applyBasicPatch( "simple_css_galil", 2000 )
 applyBasicPatch( "simple_css_glock", 1500 )
 -- applyBasicPatch( "simple_css_m3" )

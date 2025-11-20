@@ -16,5 +16,5 @@ cfcEntityStubber.registerStub( function()
     weapon.RecoilToSpread = 0
     weapon.DeployTime = 0
     weapon.HolsterTime = 0
-    weapon.NoRicochet = {[MAT_FLESH] = true, [MAT_ANTLION] = false, [MAT_BLOODYFLESH] = false, [MAT_DIRT] = false, [MAT_SAND] = false, [MAT_GLASS] = false, [MAT_ALIENFLESH] = false, [MAT_GRASS] = false}
-end)
+    weapon.NoRicochet = { [MAT_FLESH] = true, [MAT_ANTLION] = false, [MAT_BLOODYFLESH] = false, [MAT_DIRT] = false, [MAT_SAND] = false, [MAT_GLASS] = false, [MAT_ALIENFLESH] = false, [MAT_GRASS] = false }
+end )

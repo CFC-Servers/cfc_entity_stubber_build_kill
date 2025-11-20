@@ -11,10 +11,10 @@ cfcEntityStubber.registerStub( function()
     if CLIENT then
         cwBase._AdjustMouseSensitivity = cwBase._AdjustMouseSensitivity or cwBase.AdjustMouseSensitivity
 
-        cwBase.AdjustMouseSensitivity = function(self, ...)
+        cwBase.AdjustMouseSensitivity = function( self, ... )
             self.OverallMouseSens = 1
 
-            return cwBase._AdjustMouseSensitivity(self, ...)
+            return cwBase._AdjustMouseSensitivity( self, ... )
         end
     end
 end )
