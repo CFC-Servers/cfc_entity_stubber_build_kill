@@ -233,7 +233,7 @@ applyBasicPatch( "m9k_browningauto5",
 )
 applyBasicPatch( "m9k_mossberg590",
     -- og: { Damage = 9, NumShots = 10, RPM = 75, ClipSize = 8, SpreadHip = 0.03, SpreadIronSights = 0.03, KickUp = 1, KickDown = 0.8, KickHorizontal = 0.8, }
-    { Damage = 3, NumShots = 80, ClipSize = 4, SpreadHip = 0.1, SpreadIronSights = 0.1, KickUp = 3, KickHorizontal = 1.5, },
+    { Damage = 2, NumShots = 80, ClipSize = 4, SpreadHip = 0.1, SpreadIronSights = 0.1, KickUp = 3, KickHorizontal = 1.5, },
     { Instructions = "You'll always hit something, that's for sure.", BulletPenetrate = function() return false end, BulletRicochet = function() return false end, }
     --{ Damage = 11, ClipSize = 4, SpreadHip = 0.04, SpreadIronSights = 0.04, KickUp = 3, KickHorizontal = 1.5, } -- Leaving this here in case the version above is too silly.
 )
