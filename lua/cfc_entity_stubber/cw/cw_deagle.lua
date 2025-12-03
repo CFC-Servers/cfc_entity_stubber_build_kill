@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_deagle" )
+    if not weapon then return end
+
     weapon.FireDelay = 0.595
     weapon.ReloadSpeed = 1.25
     weapon.HipSpread = 0.005

@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_xm1014_official" )
+    if not weapon then return end
+
     weapon.VelocitySensitivity = 1.5
     weapon.FireDelay = 0.4
     weapon.Damage = 10

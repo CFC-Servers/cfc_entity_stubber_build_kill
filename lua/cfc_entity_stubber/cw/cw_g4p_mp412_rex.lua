@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_g4p_mp412_rex" )
+    if not weapon then return end
+
     weapon.CanRicochet = true
     weapon.CanPenetrate = false
     weapon.ReloadSpeed = 1.1

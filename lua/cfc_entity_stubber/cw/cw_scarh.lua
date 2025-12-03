@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_scarh" )
+    if not weapon then return end
+
     weapon.AimSpread = 0.0010
     weapon.SpreadPerShot = 0.004
     weapon.ReloadSpeed = 1.3

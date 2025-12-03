@@ -3,6 +3,8 @@ cfcEntityStubber.registerStub( function()
     -- https://github.com/Facepunch/garrysmod-issues/issues/5290 this issue makes some guns such as the cw rpg unusable on base branches
     -- So we just disable the spread sensitivity scaling
     local cwBase = cfcEntityStubber.getWeapon( "cw_base" )
+    if not cwBase then return end
+
     cwBase.HolsterOnLadder = false
     cwBase.NearWallEnabled = false
     cwBase.QuickScopeSpreadIncrease = 0
