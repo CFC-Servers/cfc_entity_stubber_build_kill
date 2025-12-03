@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_shorty" )
+    if not weapon then return end
+
     weapon.VelocitySensitivity = 0
     weapon.Recoil = 6
     weapon.Damage = 12

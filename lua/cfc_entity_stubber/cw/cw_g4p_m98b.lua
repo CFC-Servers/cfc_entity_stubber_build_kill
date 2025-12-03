@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_g4p_m98b" )
+    if not weapon then return end
+
     weapon.Damage = 110
     weapon.AimBreathingEnabled = false
     weapon.AimSpread = 0.00001

@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_makarov" )
+    if not weapon then return end
+
     weapon.Damage = 30
     weapon.ReloadSpeed = 1.3
     weapon.HipSpread = 0.03

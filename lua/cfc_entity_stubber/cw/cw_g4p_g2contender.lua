@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_g4p_g2contender" )
+    if not weapon then return end
+
     weapon.Attachments = {}
     weapon.Recoil = 60
     weapon.Shots = 18

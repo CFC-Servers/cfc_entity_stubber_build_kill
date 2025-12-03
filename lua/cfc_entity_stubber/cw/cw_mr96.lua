@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_mr96" )
+    if not weapon then return end
+
     weapon.ReloadSpeed = 1.2
     weapon.DeployTime = 0
     weapon.HolsterTime = 0

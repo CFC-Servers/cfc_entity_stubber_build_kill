@@ -2,6 +2,8 @@ AddCSLuaFile()
 
 cfcEntityStubber.registerStub( function()
     local weapon = cfcEntityStubber.getWeapon( "cw_g4p_xm8" )
+    if not weapon then return end
+
     weapon.ReloadSpeed = 1.2
     weapon.VelocitySensitivity = 1.2
     weapon.SpreadPerShot = 0.002
