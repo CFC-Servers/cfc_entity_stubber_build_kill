@@ -1,21 +1,23 @@
 -- https://github.com/TankNut/simple-weapons-css/blob/master/lua/entities/simple_ent_css_smokegrenade.lua
-
 cfcEntityStubber.registerStub( function()
-    local weapon = cfcEntityStubber.getWeapon( "simple_ent_css_smokegrenade" )
+    local sent = scripted_ents.GetStored( "simple_ent_css_smokegrenade" )
 
-    weapon.Explode = function( self )
-        self:EmitSound("BaseSmokeEffect.Sound")
-    
-        local effect = EffectData()
-        effect:SetOrigin(self:GetPos())
-    
+    function sent:Explode()
+        self:EmitSound( "BaseSmokeEffect.Sound" )
+
+        local eff = EffectData()
         local filter = RecipientFilter()
-        for _, ply in ipairs( player.GetAll() ) do
-                if ply:IsInPvP() then filter:AddPlayer( ply ) end
+        eff:SetOrigin( self:GetPos() )
+
+        for _, ply in player.Iterator() do
+            -- Only play for pvpers, or everyone if no pvp check exists.
+            if not ply.IsInPvP or ply:IsInPvP() then
+                filter:AddPlayer( ply )
             end
-    
-        util.Effect("simple_effect_css_smokegrenade", effect, true, filter)
-    
+        end
+
+        util.Effect( "simple_effect_css_smokegrenade", eff, true, filter )
+
         self:Remove()
     end
 end )
