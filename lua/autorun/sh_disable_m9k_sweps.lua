@@ -10,6 +10,7 @@ do
         m9k_nerve_gas = true,
         m9k_orbital_strike = true,
         m9k_rpg7 = true,
+        m9k_minigun = true,
     }
 
     hook.Add( "PreRegisterSWEP", "CFC_EntityStubber_DisableM9kSWEPS", function( swep, class )
