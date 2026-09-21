@@ -1,17 +1,17 @@
-if SERVER then AddCSLuaFile() end
+AddCSLuaFile()
 
-CFC_M9k_Stubber.registerStub( function()
-    local weapon = weapons.GetStored( "m9k_contender" )
-
+cfcEntityStubber.registerStub( function()
+    local weapon = cfcEntityStubber.getWeapon( "m9k_contender" )
     weapon.PrintName = "G2 Contender Big Game"
     weapon.Secondary.ScopeZoom = 8
     weapon.Primary.Damage = 200
-    weapon.Primary.Spread = 5
-    weapon.Primary.IronAccuracy = .05
-    weapon.Primary.KickUp = 3
-    weapon.Primary.KickDown = 3
-    weapon.Primary.KickHorizontal = 3
-    weapon.Primary.RPM = 20   
+    weapon.Primary.SpreadHip = .5
+    weapon.Primary.SpreadIronSights = .01
+    weapon.Primary.KickUp = 18
+    weapon.Primary.KickDown = 6
+    weapon.Primary.KickHorizontal = 11
+    weapon.Primary.RPM = 7   
     weapon.Secondary.UseMilDot = false
-    weapon.Secondary.UseMatador = true
+    weapon.Secondary.UseAimpoint = true
+    weapon.Instructions = "Fine tuned for damage, this weapon suffers greatly in accuracy.""
 end )
