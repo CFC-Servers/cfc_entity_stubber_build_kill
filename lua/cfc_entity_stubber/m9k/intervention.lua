@@ -11,3 +11,4 @@ cfcEntityStubber.registerStub( function()
     weapon.Instructions = "Equipped with a night vision scope."
     weapon.Primary.ClipSize = 7
 end )
+--Cosmetic rework to an old CFC M9k version as a throwback for veteran players. Changes scope to green, and extends magazine.
