@@ -1,10 +1,10 @@
-if SERVER then AddCSLuaFile() end
+AddCSLuaFile()
 
-CFC_M9k_Stubber.registerStub( function()
-  local weapon = weapons.GetStored( "m9k_svu" )
+cfcEntityStubber.registerStub( function()
+    local weapon = cfcEntityStubber.getWeapon( "m9k_svu" )
 
     
-    weapon.Secondary.UseMilDot = false
+    weapon.Secondary.UseSVD = false
     weapon.Secondary.UseGreenDuplex = true
     
 end )
