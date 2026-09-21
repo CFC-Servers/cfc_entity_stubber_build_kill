@@ -1,12 +1,13 @@
-if SERVER then AddCSLuaFile() end
+AddCSLuaFile()
 
-CFC_M9k_Stubber.registerStub( function()
-    local weapon = weapons.GetStored( "m9k_intervention" )
+cfcEntityStubber.registerStub( function()
+    local weapon = cfcEntityStubber.getWeapon( "m9k_intervention" )
 
     weapon.PrintName = "M200 Nightstalker"
     weapon.Secondary.UseMilDot = false
     weapon.Secondary.UseElcan = true
-    weapon.Primary.Damage = 95
-    weapon.Primary.Spread = .05
     weapon.Primary.IronAccuracy = .001
+    weapon.Secondary.ScopeZoom = 12
+    weapon.Instructions = "Equipped with a night vision scope."
+    weapon.Primary.ClipSize = 7
 end )
