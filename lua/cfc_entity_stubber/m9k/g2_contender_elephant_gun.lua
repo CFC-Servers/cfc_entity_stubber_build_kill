@@ -15,3 +15,4 @@ cfcEntityStubber.registerStub( function()
     weapon.Secondary.UseAimpoint = true
     weapon.Instructions = "Fine tuned for damage, this weapon suffers greatly in accuracy.""
 end )
+--Chosen for the high damage rework due to lack of use and overall poor performance compared to other sniper rifles.
