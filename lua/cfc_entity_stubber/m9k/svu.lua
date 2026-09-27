@@ -8,4 +8,4 @@ cfcEntityStubber.registerStub( function()
     weapon.Secondary.UseGreenDuplex = true
     
 end )
---Changed scope to add flair to the weapon.
+--Changed scope to an unused texture to add flair to the weapon.
