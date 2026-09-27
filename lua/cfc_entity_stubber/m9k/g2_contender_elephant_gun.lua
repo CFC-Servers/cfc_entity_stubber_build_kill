@@ -13,6 +13,11 @@ cfcEntityStubber.registerStub( function()
     weapon.Primary.RPM = 7   
     weapon.Secondary.UseMilDot = false
     weapon.Secondary.UseAimpoint = true
-    weapon.Instructions = "Fine tuned for damage, this weapon suffers greatly in accuracy.""
+    weapon.Instructions = "Fine tuned for damage, this weapon suffers greatly in accuracy."
+    local wepEntry = list.GetEntry( "Weapon", "m9k_contender" )
+    if wepEntry then
+        wepEntry.PrintName =  weapon.PrintName
+        list.Set( "Weapon", "m9k_contender", wepEntry )
+        end
 end )
 --Chosen for the high damage rework due to lack of use and overall poor performance compared to other sniper rifles.
