@@ -15,7 +15,7 @@ cfcEntityStubber.registerStub( function()
     weapon.Secondary.UseMilDot = false
     weapon.Secondary.UseAimpoint = true
     weapon.Instructions = "Fine tuned for hunting large animals, this weapon suffers greatly in accuracy."
-    
+
     local wepEntry = list.GetEntry( "Weapon", "m9k_remington7615p" )
     if wepEntry then
         wepEntry.PrintName =  weapon.PrintName
