@@ -11,7 +11,7 @@ cfcEntityStubber.registerStub( function()
     weapon.Primary.KickDown = 6
     weapon.Primary.KickHorizontal = 11
     weapon.Primary.ClipSize = 3
-    weapon.Primary.RPM = 30   
+    weapon.Primary.RPM = 30
     weapon.Secondary.UseMilDot = false
     weapon.Secondary.UseAimpoint = true
     weapon.Instructions = "Fine tuned for hunting large animals, this weapon suffers greatly in accuracy."
@@ -20,5 +20,5 @@ cfcEntityStubber.registerStub( function()
         wepEntry.PrintName =  weapon.PrintName
         list.Set( "Weapon", "m9k_remington7615p", wepEntry )
         end
-end )
+    end )
 --Chosen for the high damage rework due to lack of use and overall poor performance compared to other sniper rifles.
