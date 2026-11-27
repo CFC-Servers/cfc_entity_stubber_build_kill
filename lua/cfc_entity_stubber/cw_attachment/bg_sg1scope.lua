@@ -1,5 +1,3 @@
-AddCSLuaFile()
-
 cfcEntityStubber.registerStub( function()
     local attachment = cfcEntityStubber.getAttachment( "bg_sg1scope" )
 

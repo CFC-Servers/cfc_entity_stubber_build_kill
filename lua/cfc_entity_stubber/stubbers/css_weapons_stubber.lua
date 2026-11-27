@@ -1,2 +1,1 @@
-AddCSLuaFile()
 cfcEntityStubber.registerStubber( "css" )

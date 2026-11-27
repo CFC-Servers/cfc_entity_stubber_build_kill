@@ -1,4 +1,3 @@
-AddCSLuaFile()
 -- Stupid method but these fucking weapons don't use a base so it's the only way.
 local cssWeapons = {
     "weapon_elite",

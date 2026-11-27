@@ -1,0 +1,8 @@
+return function( weapon )
+
+    weapon.DeployTime = 0
+    weapon.HolsterTime = 0
+    weapon.VelocitySensitivity = 0
+    weapon.Damage = 30
+    weapon.SpreadPerShot = 0.002
+end
