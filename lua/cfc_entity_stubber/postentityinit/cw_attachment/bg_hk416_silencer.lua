@@ -1,4 +1,4 @@
-cfcEntityStubber.registerStub( function()
+return function()
     local attachment = cfcEntityStubber.getAttachment( "bg_hk416_silencer" )
 
     attachment.statModifiers = {
@@ -8,4 +8,4 @@ cfcEntityStubber.registerStub( function()
     }
 
     cfcEntityStubber.applyAttachmentChange( attachment )
-end )
+end

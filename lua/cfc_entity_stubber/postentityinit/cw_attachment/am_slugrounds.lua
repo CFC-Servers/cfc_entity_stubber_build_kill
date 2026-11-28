@@ -1,4 +1,4 @@
-cfcEntityStubber.registerStub( function()
+return function()
     local attachment = cfcEntityStubber.getAttachment( "am_slugrounds" )
 
     attachment.statModifiers = {
@@ -16,4 +16,4 @@ cfcEntityStubber.registerStub( function()
     end
 
     cfcEntityStubber.applyAttachmentChange( attachment )
-end )
+end

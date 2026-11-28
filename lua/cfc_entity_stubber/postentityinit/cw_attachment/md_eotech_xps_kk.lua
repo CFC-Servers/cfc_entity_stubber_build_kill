@@ -1,4 +1,4 @@
-cfcEntityStubber.registerStub( function()
+return function()
     local attachment = cfcEntityStubber.getAttachment( "md_eotech_xps_kk" )
 
     attachment.statModifiers = {
@@ -6,4 +6,4 @@ cfcEntityStubber.registerStub( function()
     }
 
     cfcEntityStubber.applyAttachmentChange( attachment )
-end )
+end

@@ -1,4 +1,4 @@
-cfcEntityStubber.registerStub( function()
+return function()
     local attachment = cfcEntityStubber.getAttachment( "md_acog" )
 
     attachment.shadowMaskConfig = {
@@ -15,4 +15,4 @@ cfcEntityStubber.registerStub( function()
     }
 
     cfcEntityStubber.applyAttachmentChange( attachment )
-end )
+end

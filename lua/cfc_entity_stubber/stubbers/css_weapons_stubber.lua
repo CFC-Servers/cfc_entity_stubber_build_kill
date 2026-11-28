@@ -1,1 +1,0 @@
-cfcEntityStubber.registerStubber( "css" )
