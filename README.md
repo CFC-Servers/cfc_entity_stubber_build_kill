@@ -1,5 +1,5 @@
-# cfc_buildkill_entity_stubs
+# CFC Build/Kill Entity Stubs
 
-Entity Stubber definitions for the Build/Kill server
+Entity Stubber definitions for the Build/Kill server.
 
-Uses and requires: https://github.com/CFC-Servers/cfc_entity_stubber
+Requires the [cfc_entity_stubber](https://github.com/CFC-Servers/cfc_entity_stubber). See entity stubber for instructions on how to add patches to entities.

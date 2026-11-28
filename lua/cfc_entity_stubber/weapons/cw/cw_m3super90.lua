@@ -1,0 +1,13 @@
+return function( weapon )
+
+    weapon.Damage = 15
+    weapon.VelocitySensitivity = 0
+    weapon.HipSpread = 0.06
+    weapon.AimSpread = 0.025
+    weapon.ClumpSpread = 0.04
+    weapon.Recoil = 4
+    weapon.FireDelay = 0.8
+    weapon.DeployTime = 0
+    weapon.HolsterTime = 0
+    weapon.Shots = 14
+end
